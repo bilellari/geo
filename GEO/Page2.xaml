@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="GEO.Page2">
+    <ContentPage.Content>
+        <StackLayout>
+            <ImageButton Source="backArrow.png"
+                         WidthRequest="50"
+                         TranslationX="-150"
+                         TranslationY="15"
+                         BackgroundColor="Transparent"
+                         Clicked="ImageButton_Clicked"
+                         />
+            <Label Text="My Tasks"
+                   HorizontalOptions="Center"
+                   FontSize="Large"
+                   TextColor="Blue"
+                   TranslationY="20"
+                   />
+            <ListView TranslationY="15"
+                IsPullToRefreshEnabled="True"
+                      ItemSelected="TasksListView_ItemSelected"
+                      x:Name="TasksListView"
+                      RowHeight="50"
+                  SeparatorColor="Blue"
+                >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding chambre}"/>
+                                <Label Text="{Binding TaskDescription}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

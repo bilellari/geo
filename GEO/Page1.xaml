@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="GEO.Page1">
+    <ContentPage.Content>
+        <StackLayout >
+           
+            <ListView IsPullToRefreshEnabled="True" 
+                       RowHeight="100"
+                  SeparatorColor="Blue"
+                      x:Name="ChambreListView"
+                      
+                >
+            <ListView.ItemTemplate >
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout>
+                            <Label Text="id chambre"/>
+                            <Label Text="{Binding id_Chambre}"/>
+                            <Label Text="name chambre"/>
+                            <Label Text="{Binding name_Chambre}"/>
+                            
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+            </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

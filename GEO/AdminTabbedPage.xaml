@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="GEO.AdminTabbedPage" >
+    
+    // 
+   
+        <ContentPage Title="ajouter Chambre" >
+        
+
+            <StackLayout>
+
+                <Entry x:Name="nom_ch_txt" Placeholder="saisir le nom de chambre"/>
+                <Entry x:Name="longitude_txt" Placeholder="saisir la longitude"/>
+                <Entry x:Name="latitude_txt" Placeholder="saisir la latitude"/>
+                <Button Text="ajouter chambre" Clicked="Add_1"/>
+            </StackLayout>
+
+     
+
+
+    </ContentPage>
+
+
+    <ContentPage Title="liste des Chambres">
+        <StackLayout>
+            <Entry x:Name="idtxt" IsReadOnly="True" IsVisible="False" />
+            <Entry x:Name="namechambretxt" Placeholder="nom de la chambre"  />
+            <Entry x:Name="longtudetxt" Placeholder="longitude" />
+            <Entry x:Name="latitudetxt" Placeholder="latitude" />
+            <Button Text="delet"
+                    Clicked="Button_Clicked"
+                    TextColor="White" BackgroundColor="DarkRed"/>
+            <Button Text="update" 
+                    Clicked="Button_Clicked_1"
+                    TextColor="White" BackgroundColor="Yellow"/>
+            <ListView IsPullToRefreshEnabled="True"
+                      ItemTapped="ChambreListView_ItemTapped"
+                      x:Name="ChambreListView"
+                      RowHeight="200"
+                  SeparatorColor="Aqua">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="Id de chambre"/>
+                                <Label Text="{Binding id_Chambre}"/>
+                                <Label Text="Nom de la  chambre"/>
+                                <Label Text="{Binding name_Chambre}"/>
+                                <Label Text="longitude"/>
+                                <Label Text="{Binding Longitude}"/>
+                                <Label Text="latitude"/>
+                                <Label Text="{Binding Latitude}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage>
+
+
+    <ContentPage Title="Ajouter utilisateur" >
+        <StackLayout>
+            <Entry x:Name="usernametxt" Placeholder="Ajouter Login"/>
+            <Entry x:Name="passwordtxt" Placeholder="Ajouter Mot de passe"/>
+            <Picker x:Name="rolePicker"
+                    Title="Choisir Role">
+                <Picker.Items>
+                    <x:String>Admin</x:String>
+                    <x:String>Technicien</x:String>
+                </Picker.Items>
+            </Picker>
+            <Button Text="add user" Clicked="Button_Clicked_2"/>
+        </StackLayout>
+    </ContentPage>
+
+
+    <ContentPage Title="modifier utilisateur "  >
+        <StackLayout>
+            <Entry x:Name="idusertxt" IsReadOnly="True" IsVisible="False"/>
+            <Entry x:Name="usernameEdittxt" Placeholder="Login"  />
+            <Entry x:Name="passwordEdittxt" Placeholder="Mot de passe" />
+            <Picker  x:Name="roleEditPicker"
+                    Title="Role">
+                <Picker.Items>
+                    <x:String>Admin</x:String>
+                    <x:String>Technicien</x:String>
+                </Picker.Items>
+            </Picker>
+            <Button Text="supprimer"
+                    x:Name="btnDeleteUser"
+                    Clicked="btnDeleteUser_Clicked"
+                    TextColor="DarkBlue" BackgroundColor="Azure"/>
+            <Button Text="modifier" 
+                    x:Name="btnEditUser"
+                    Clicked="btnEditUser_Clicked"
+                    TextColor="DarkBlue" BackgroundColor="Azure"/>
+            <ListView IsPullToRefreshEnabled="True"
+                      ItemTapped="userListView_ItemTapped"
+                      x:Name="userListView"
+                      RowHeight="200"
+                  SeparatorColor="Aqua">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="id user" TextColor="Aqua"/>
+                                <Label Text="{Binding id}"/>
+                                <Label Text="username" TextColor="Aqua"/>
+                                <Label Text="{Binding username}"/>
+                                <Label Text="password" TextColor="Aqua"/>
+                                <Label Text="{Binding password}"/>
+                                <Label Text="role" TextColor="Aqua"/>
+                                <Label Text="{Binding role}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage>
+    <ContentPage Title="Taches" >
+        <StackLayout>
+            <Picker  x:Name="TechnichianPicker"
+                    Title="choisir Technicien"
+                     SelectedIndexChanged="TechnichianPicker_SelectedIndexChanged"
+                     ItemDisplayBinding="{Binding username}">
+            </Picker>
+            <Picker  x:Name="chambrePicker"
+                    Title="Choisir Chambre"
+                     SelectedIndexChanged="chambrePicker_SelectedIndexChanged"
+                     ItemDisplayBinding="{Binding name_Chambre}">
+            </Picker>
+            <Entry x:Name="taskDescriptiontxt" 
+                   Placeholder="Description de la tache"/>
+            <Button Text="ajouter tache" Clicked="Button_Clicked_3"/>
+        </StackLayout>
+    </ContentPage>
+</TabbedPage>

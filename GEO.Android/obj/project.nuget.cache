@@ -1,0 +1,78 @@
+{
+  "version": 2,
+  "dgSpecHash": "cUXA8ejwVxD7MzSBoWDFeJdCM/mAnV+iUo0sVHy4Nu8mhBXqcakXxsVHU0cf1yjtN+kr/Y2tmPkvcJvMwSRuXw==",
+  "success": true,
+  "projectFilePath": "C:\\GEO\\GEO.Android\\GEO.Android.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\bilel_marzougui\\.nuget\\packages\\system.data.common\\4.3.0\\system.data.common.4.3.0.nupkg.sha512",
+    "C:\\Users\\bilel_marzougui\\.nuget\\packages\\system.data.sqlclient\\4.8.1\\system.data.sqlclient.4.8.1.nupkg.sha512",
+    "C:\\Users\\bilel_marzougui\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.arch.core.common\\1.1.1.3\\xamarin.android.arch.core.common.1.1.1.3.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.arch.core.runtime\\1.1.1.3\\xamarin.android.arch.core.runtime.1.1.1.3.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.arch.lifecycle.common\\1.1.1.3\\xamarin.android.arch.lifecycle.common.1.1.1.3.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.arch.lifecycle.livedata\\1.1.1.3\\xamarin.android.arch.lifecycle.livedata.1.1.1.3.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.arch.lifecycle.livedata.core\\1.1.1.3\\xamarin.android.arch.lifecycle.livedata.core.1.1.1.3.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.arch.lifecycle.runtime\\1.1.1.3\\xamarin.android.arch.lifecycle.runtime.1.1.1.3.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.arch.lifecycle.viewmodel\\1.1.1.3\\xamarin.android.arch.lifecycle.viewmodel.1.1.1.3.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.support.animated.vector.drawable\\28.0.0.3\\xamarin.android.support.animated.vector.drawable.28.0.0.3.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.support.annotations\\28.0.0.3\\xamarin.android.support.annotations.28.0.0.3.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.support.asynclayoutinflater\\28.0.0.3\\xamarin.android.support.asynclayoutinflater.28.0.0.3.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.support.collections\\28.0.0.3\\xamarin.android.support.collections.28.0.0.3.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.support.compat\\28.0.0.3\\xamarin.android.support.compat.28.0.0.3.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.support.coordinaterlayout\\28.0.0.3\\xamarin.android.support.coordinaterlayout.28.0.0.3.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.support.core.ui\\28.0.0.3\\xamarin.android.support.core.ui.28.0.0.3.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.support.core.utils\\28.0.0.3\\xamarin.android.support.core.utils.28.0.0.3.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.support.cursoradapter\\28.0.0.3\\xamarin.android.support.cursoradapter.28.0.0.3.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.support.customtabs\\28.0.0.3\\xamarin.android.support.customtabs.28.0.0.3.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.support.customview\\28.0.0.3\\xamarin.android.support.customview.28.0.0.3.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.support.design\\28.0.0.3\\xamarin.android.support.design.28.0.0.3.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.support.documentfile\\28.0.0.3\\xamarin.android.support.documentfile.28.0.0.3.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.support.drawerlayout\\28.0.0.3\\xamarin.android.support.drawerlayout.28.0.0.3.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.support.fragment\\28.0.0.3\\xamarin.android.support.fragment.28.0.0.3.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.support.interpolator\\28.0.0.3\\xamarin.android.support.interpolator.28.0.0.3.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.support.loader\\28.0.0.3\\xamarin.android.support.loader.28.0.0.3.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.support.localbroadcastmanager\\28.0.0.3\\xamarin.android.support.localbroadcastmanager.28.0.0.3.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.support.media.compat\\28.0.0.3\\xamarin.android.support.media.compat.28.0.0.3.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.support.print\\28.0.0.3\\xamarin.android.support.print.28.0.0.3.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.support.slidingpanelayout\\28.0.0.3\\xamarin.android.support.slidingpanelayout.28.0.0.3.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.support.swiperefreshlayout\\28.0.0.3\\xamarin.android.support.swiperefreshlayout.28.0.0.3.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.support.transition\\28.0.0.3\\xamarin.android.support.transition.28.0.0.3.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.support.v4\\28.0.0.3\\xamarin.android.support.v4.28.0.0.3.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.support.v7.appcompat\\28.0.0.3\\xamarin.android.support.v7.appcompat.28.0.0.3.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.support.v7.cardview\\28.0.0.3\\xamarin.android.support.v7.cardview.28.0.0.3.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.support.v7.recyclerview\\28.0.0.3\\xamarin.android.support.v7.recyclerview.28.0.0.3.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.support.vector.drawable\\28.0.0.3\\xamarin.android.support.vector.drawable.28.0.0.3.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.support.versionedparcelable\\28.0.0.3\\xamarin.android.support.versionedparcelable.28.0.0.3.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.support.viewpager\\28.0.0.3\\xamarin.android.support.viewpager.28.0.0.3.nupkg.sha512",
+    "C:\\Users\\bilel_marzougui\\.nuget\\packages\\xamarin.build.download\\0.4.11\\xamarin.build.download.0.4.11.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.essentials\\1.3.1\\xamarin.essentials.1.3.1.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.forms\\4.4.0.991265\\xamarin.forms.4.4.0.991265.nupkg.sha512",
+    "C:\\Users\\bilel_marzougui\\.nuget\\packages\\xamarin.forms.maps\\4.6.0.800\\xamarin.forms.maps.4.6.0.800.nupkg.sha512",
+    "C:\\Users\\bilel_marzougui\\.nuget\\packages\\xamarin.googleplayservices.base\\71.1610.0\\xamarin.googleplayservices.base.71.1610.0.nupkg.sha512",
+    "C:\\Users\\bilel_marzougui\\.nuget\\packages\\xamarin.googleplayservices.basement\\71.1620.0\\xamarin.googleplayservices.basement.71.1620.0.nupkg.sha512",
+    "C:\\Users\\bilel_marzougui\\.nuget\\packages\\xamarin.googleplayservices.maps\\71.1610.0\\xamarin.googleplayservices.maps.71.1610.0.nupkg.sha512",
+    "C:\\Users\\bilel_marzougui\\.nuget\\packages\\xamarin.googleplayservices.tasks\\71.1601.0\\xamarin.googleplayservices.tasks.71.1601.0.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1605",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Passage à une version antérieure du package détecté : Xamarin.Essentials de 1.5.3.2 à 1.3.1. Référencez le package directement à partir du projet pour sélectionner une version différente. \r\n GEO.Android -> GEO -> Xamarin.Essentials (>= 1.5.3.2) \r\n GEO.Android -> Xamarin.Essentials (>= 1.3.1)",
+      "libraryId": "Xamarin.Essentials",
+      "targetGraphs": [
+        "MonoAndroid,Version=v9.0"
+      ]
+    },
+    {
+      "code": "NU1605",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Passage à une version antérieure du package détecté : Xamarin.Forms de 4.6.0.800 à 4.4.0.991265. Référencez le package directement à partir du projet pour sélectionner une version différente. \r\n GEO.Android -> GEO -> Xamarin.Forms (>= 4.6.0.800) \r\n GEO.Android -> Xamarin.Forms (>= 4.4.0.991265)",
+      "libraryId": "Xamarin.Forms",
+      "targetGraphs": [
+        "MonoAndroid,Version=v9.0"
+      ]
+    }
+  ]
+}

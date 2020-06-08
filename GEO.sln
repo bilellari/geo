@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29920.165
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GEO.Android", "GEO.Android\GEO.Android.csproj", "{CA4948FF-F079-4660-A7E0-95030FC81E1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GEO", "GEO\GEO.csproj", "{FE945A02-30B4-4164-BEA3-BDB011CB5509}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CA4948FF-F079-4660-A7E0-95030FC81E1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA4948FF-F079-4660-A7E0-95030FC81E1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA4948FF-F079-4660-A7E0-95030FC81E1C}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{CA4948FF-F079-4660-A7E0-95030FC81E1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA4948FF-F079-4660-A7E0-95030FC81E1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA4948FF-F079-4660-A7E0-95030FC81E1C}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{FE945A02-30B4-4164-BEA3-BDB011CB5509}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE945A02-30B4-4164-BEA3-BDB011CB5509}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE945A02-30B4-4164-BEA3-BDB011CB5509}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{FE945A02-30B4-4164-BEA3-BDB011CB5509}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE945A02-30B4-4164-BEA3-BDB011CB5509}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE945A02-30B4-4164-BEA3-BDB011CB5509}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {61B91B17-E01F-4DCE-A9FC-63EF55D3F8DD}
+	EndGlobalSection
+EndGlobal
