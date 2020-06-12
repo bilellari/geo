@@ -29,5 +29,10 @@ namespace GEO
         {
             Navigation.PushModalAsync(new Page1());
         }
+
+        private void MainSearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

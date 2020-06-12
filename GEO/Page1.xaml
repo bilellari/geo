@@ -7,12 +7,12 @@
              x:Class="GEO.Page1">
     <ContentPage.Content>
         <StackLayout >
-           
+            <SearchBar x:Name="TaskSearchBar" VerticalOptions="Center" TextChanged="TaskSearchBar_TextChanged" HorizontalOptions="Center"/>
             <ListView IsPullToRefreshEnabled="True" 
                        RowHeight="100"
                   SeparatorColor="Blue"
                       x:Name="ChambreListView"
-                      
+                      ItemSelected="ChambreListView_ItemSelected"
                 >
             <ListView.ItemTemplate >
                 <DataTemplate>
