@@ -65,5 +65,10 @@ namespace GEO
             }
 
         }
+
+        private void usernametxt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

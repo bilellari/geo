@@ -55,6 +55,7 @@ namespace GEO
 
         private void TasksListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
+            
             var selectedItem = e.SelectedItem as MyTache;
             if (selectedItem == null) return;
             Navigation.PushModalAsync(new TaskDetailandMap(selectedItem.id));

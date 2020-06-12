@@ -4,19 +4,20 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="GEO.AdminTabbedPage" >
-    
-    // 
-   
-        <ContentPage Title="ajouter Chambre" >
-        
+             x:Class="GEO.AdminTabbedPage" 
+            >
+
+
+
+    <ContentPage Title="ajouter Chambre"  IconImageSource="addch" >
+       
 
             <StackLayout>
 
                 <Entry x:Name="nom_ch_txt" Placeholder="saisir le nom de chambre"/>
                 <Entry x:Name="longitude_txt" Placeholder="saisir la longitude"/>
                 <Entry x:Name="latitude_txt" Placeholder="saisir la latitude"/>
-                <Button Text="ajouter chambre" Clicked="Add_1"/>
+            <Button Text="ajouter chambre" Clicked="Add_1" BackgroundColor="#487CEA " TextColor="White"/>
             </StackLayout>
 
      
@@ -25,34 +26,35 @@
     </ContentPage>
 
 
-    <ContentPage Title="liste des Chambres">
+    <ContentPage Title="liste des Chambres"  IconImageSource="liste">
         <StackLayout>
             <Entry x:Name="idtxt" IsReadOnly="True" IsVisible="False" />
             <Entry x:Name="namechambretxt" Placeholder="nom de la chambre"  />
             <Entry x:Name="longtudetxt" Placeholder="longitude" />
             <Entry x:Name="latitudetxt" Placeholder="latitude" />
-            <Button Text="delet"
+            <Button Text="Supprimer"
                     Clicked="Button_Clicked"
-                    TextColor="White" BackgroundColor="DarkRed"/>
-            <Button Text="update" 
+                    TextColor="White" BackgroundColor="#487CEA"/>
+            <Button Text="Modifier" 
                     Clicked="Button_Clicked_1"
-                    TextColor="White" BackgroundColor="Yellow"/>
+                    TextColor="White" BackgroundColor="#487CEA"/>
             <ListView IsPullToRefreshEnabled="True"
                       ItemTapped="ChambreListView_ItemTapped"
                       x:Name="ChambreListView"
                       RowHeight="200"
-                  SeparatorColor="Aqua">
+                  SeparatorColor="DarkGray"
+                       >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout>
-                                <Label Text="Id de chambre"/>
+                                <Label Text="Id de chambre" TextColor="Black" FontSize="Medium"/>
                                 <Label Text="{Binding id_Chambre}"/>
-                                <Label Text="Nom de la  chambre"/>
+                                <Label Text="Nom de la  chambre" TextColor="Black" FontSize="Medium"/>
                                 <Label Text="{Binding name_Chambre}"/>
-                                <Label Text="longitude"/>
+                                <Label Text="longitude" TextColor="Black" FontSize="Medium" />
                                 <Label Text="{Binding Longitude}"/>
-                                <Label Text="latitude"/>
+                                <Label Text="latitude" TextColor="Black" FontSize="Medium"/>
                                 <Label Text="{Binding Latitude}"/>
                             </StackLayout>
                         </ViewCell>
@@ -63,7 +65,7 @@
     </ContentPage>
 
 
-    <ContentPage Title="Ajouter utilisateur" >
+    <ContentPage Title="Ajouter utilisateur"  IconImageSource="adduser2">
         <StackLayout>
             <Entry x:Name="usernametxt" Placeholder="Ajouter Login"/>
             <Entry x:Name="passwordtxt" Placeholder="Ajouter Mot de passe"/>
@@ -74,12 +76,12 @@
                     <x:String>Technicien</x:String>
                 </Picker.Items>
             </Picker>
-            <Button Text="add user" Clicked="Button_Clicked_2"/>
+            <Button Text="Ajouter utilisateur" Clicked="Button_Clicked_2"  BackgroundColor="#487CEA" TextColor="White"/>
         </StackLayout>
     </ContentPage>
 
 
-    <ContentPage Title="modifier utilisateur "  >
+    <ContentPage Title="modifier utilisateur " IconImageSource="listeuser">
         <StackLayout>
             <Entry x:Name="idusertxt" IsReadOnly="True" IsVisible="False"/>
             <Entry x:Name="usernameEdittxt" Placeholder="Login"  />
@@ -94,27 +96,27 @@
             <Button Text="supprimer"
                     x:Name="btnDeleteUser"
                     Clicked="btnDeleteUser_Clicked"
-                    TextColor="DarkBlue" BackgroundColor="Azure"/>
+                    TextColor="White" BackgroundColor="#487CEA"/>
             <Button Text="modifier" 
                     x:Name="btnEditUser"
                     Clicked="btnEditUser_Clicked"
-                    TextColor="DarkBlue" BackgroundColor="Azure"/>
+                    TextColor="White" BackgroundColor="#487CEA"/>
             <ListView IsPullToRefreshEnabled="True"
                       ItemTapped="userListView_ItemTapped"
                       x:Name="userListView"
                       RowHeight="200"
-                  SeparatorColor="Aqua">
+                  SeparatorColor="Black">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout>
-                                <Label Text="id user" TextColor="Aqua"/>
-                                <Label Text="{Binding id}"/>
-                                <Label Text="username" TextColor="Aqua"/>
-                                <Label Text="{Binding username}"/>
-                                <Label Text="password" TextColor="Aqua"/>
-                                <Label Text="{Binding password}"/>
-                                <Label Text="role" TextColor="Aqua"/>
+                                <Label Text="id user" TextColor="Black" />
+                                <Label Text="{Binding id}" />
+                                <Label Text="username" TextColor="Black" />
+                                <Label Text="{Binding username}" />
+                                <Label Text="password" TextColor="Black" />
+                                <Label Text="{Binding password}" />
+                                <Label Text="role" TextColor="Black"  />
                                 <Label Text="{Binding role}"/>
                             </StackLayout>
                         </ViewCell>
@@ -123,7 +125,7 @@
             </ListView>
         </StackLayout>
     </ContentPage>
-    <ContentPage Title="Taches" >
+    <ContentPage Title="Taches" IconImageSource="task" >
         <StackLayout>
             <Picker  x:Name="TechnichianPicker"
                     Title="choisir Technicien"
@@ -137,7 +139,7 @@
             </Picker>
             <Entry x:Name="taskDescriptiontxt" 
                    Placeholder="Description de la tache"/>
-            <Button Text="ajouter tache" Clicked="Button_Clicked_3"/>
+            <Button Text="ajouter tache" Clicked="Button_Clicked_3" TextColor="White" BackgroundColor="#487CEA"/>
         </StackLayout>
     </ContentPage>
 </TabbedPage>

@@ -14,7 +14,7 @@
                          BackgroundColor="Transparent"
                          Clicked="ImageButton_Clicked"
                          />
-            <Label Text="My Tasks"
+            <Label Text="Mes Taches"
                    HorizontalOptions="Center"
                    FontSize="Large"
                    TextColor="Blue"

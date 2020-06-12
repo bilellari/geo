@@ -8,7 +8,7 @@ namespace GEO
     {
         public int id_Chambre{ get; set; }
         public string name_Chambre { get; set; }
-        public Single Longitude { get; set; }
-        public Single Latitude { get; set; }
+        public double Longitude { get; set; }
+        public double Latitude { get; set; }
     }
 }

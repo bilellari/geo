@@ -3,16 +3,32 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              mc:Ignorable="d"
              x:Class="GEO.TaskDetailandMap">
     <ContentPage.Content >
         <StackLayout>
+
             
-            <Button Text="i finished thed task"/>
-            <Label Text="chamber" FontSize="Medium" TextColor="Blue"/>
+            <Label Text="chambre" FontSize="Medium" TextColor="Blue"/>
             <Label x:Name="lblChamber" FontSize="Small" />
-            <Label Text="Task" FontSize="Medium" TextColor="Blue"/>
+            <Label Text="Tache" FontSize="Medium" TextColor="Blue"/>
             <Label x:Name="lblTask" FontSize="Small"/>
+            <Entry x:Name="longtudetxt" IsVisible="False"/>
+            <Entry x:Name="latitudetxt" IsVisible="False"/>
+            <Button x:Name="btnTakeToLocation" Text="Voir sur la carte" Clicked="btnTakeToLocation_Clicked" BackgroundColor="#487CEA " TextColor="White"/>
+            <Button Text="Marquer finie"  BackgroundColor="#487CEA " TextColor="White"/>
+            <maps:Map x:Name="formMap"  VerticalOptions="EndAndExpand" HeightRequest="400" />
+            <StackLayout Orientation="Horizontal"
+                     HorizontalOptions="Center"
+                     Spacing="30">
+                <Button Text="Street"
+                    Clicked="OnButtonClicked" />
+                <Button Text="Satellite"
+                    Clicked="OnButtonClicked" />
+                <Button Text="Hybrid"
+                    Clicked="OnButtonClicked" />
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

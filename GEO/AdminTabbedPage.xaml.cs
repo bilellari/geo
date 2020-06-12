@@ -45,8 +45,8 @@ namespace GEO
                 if (!string.IsNullOrEmpty(nom_ch_txt.Text) && !string.IsNullOrEmpty(longitude_txt.Text) && !string.IsNullOrEmpty(latitude_txt.Text))
                     using (SqlConnection con = new SqlConnection(connect.c))
                     {
-                        Single longitude = Convert.ToSingle(longitude_txt.Text.ToString());
-                        Single latitude = Convert.ToSingle(latitude_txt.Text.ToString());
+                        double longitude = double.Parse(longitude_txt.Text.ToString());
+                        double latitude = double.Parse(latitude_txt.Text.ToString());
                         con.Open();
                         String st = "INSERT INTO [chambre] ([name_Chambre],[Longitude],[Latitude]) values (@name_chambre,@longitude,@latitude)";
                         SqlCommand cmd = new SqlCommand(st, con);
@@ -55,6 +55,7 @@ namespace GEO
                         cmd.Parameters.AddWithValue("@latitude", latitude);
                         cmd.ExecuteNonQuery();
                         con.Close();
+                        getchamberToPicker();
                         DisplayAlert("alert", "you are added the new chambre", "ok");
                         longitude_txt.Text = string.Empty;
                         nom_ch_txt.Text = string.Empty;
@@ -87,8 +88,8 @@ namespace GEO
                     Chambre c = new Chambre();
                     c.id_Chambre = Convert.ToInt32(reader["id_Chambre"].ToString());
                     c.name_Chambre = reader["name_Chambre"].ToString();
-                    c.Longitude = Convert.ToSingle(reader["Longitude"].ToString());
-                    c.Latitude = Convert.ToSingle(reader["Latitude"].ToString());
+                    c.Longitude = double.Parse(reader["Longitude"].ToString());
+                    c.Latitude = double.Parse(reader["Latitude"].ToString());
                     chambrelist.Add(c);
                 }
                 return chambrelist;
@@ -134,8 +135,8 @@ namespace GEO
                     using (SqlConnection con = new SqlConnection(connect.c))
                     {
                         Int32 key = Convert.ToInt32(idtxt.Text);
-                        Single lomgtude = Convert.ToSingle(longtudetxt.Text);
-                        Single latitude = Convert.ToSingle(latitudetxt.Text);
+                        string lomgtude = (longtudetxt.Text);
+                        string latitude = (latitudetxt.Text);
                         SqlCommand command = new SqlCommand
                             (
                             "update  [dbo].[Chambre] set [name_Chambre]=@name,[Longitude]=@lo,[Latitude]=@la where [id_Chambre]=@id",
@@ -164,8 +165,8 @@ namespace GEO
         {
             var item = (Chambre)e.Item;
             Int32 id= Convert.ToInt32(item.id_Chambre);
-            Single lomgtude = Convert.ToSingle(item.Longitude);
-            Single latitude = Convert.ToSingle(item.Latitude);
+            double lomgtude = double.Parse(item.Longitude.ToString());
+            double latitude = double.Parse(item.Latitude.ToString());
             idtxt.Text = id.ToString();
             namechambretxt.Text = item.name_Chambre;
             longtudetxt.Text = lomgtude.ToString();
