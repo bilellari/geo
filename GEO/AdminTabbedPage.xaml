@@ -2,9 +2,10 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+            mc:Ignorable="d"
              x:Class="GEO.AdminTabbedPage" 
+            NavigationPage.HasNavigationBar="False"
             >
 
 
@@ -18,7 +19,9 @@
                 <Entry x:Name="longitude_txt" Placeholder="saisir la longitude"/>
                 <Entry x:Name="latitude_txt" Placeholder="saisir la latitude"/>
             <Button Text="ajouter chambre" Clicked="Add_1" BackgroundColor="#487CEA " TextColor="White"/>
-            </StackLayout>
+           
+            <maps:Map x:Name="formMap"  VerticalOptions="EndAndExpand" HeightRequest="400"  MapClicked="formMap_MapClicked"/>
+        </StackLayout>
 
      
 
@@ -38,6 +41,9 @@
             <Button Text="Modifier" 
                     Clicked="Button_Clicked_1"
                     TextColor="White" BackgroundColor="#487CEA"/>
+            <Button Text="voir la localisation des chambres" 
+                    Clicked="Button_Clicked_5"
+                    TextColor="White" BackgroundColor="#487CEA"/>
             <ListView IsPullToRefreshEnabled="True"
                       ItemTapped="ChambreListView_ItemTapped"
                       x:Name="ChambreListView"
@@ -48,13 +54,13 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout>
-                                <Label Text="Id de chambre" TextColor="Black" FontSize="Medium"/>
+                                <Label Text="Id de chambre" TextColor="Black" />
                                 <Label Text="{Binding id_Chambre}"/>
-                                <Label Text="Nom de la  chambre" TextColor="Black" FontSize="Medium"/>
+                                <Label Text="Nom de la  chambre" TextColor="Black" />
                                 <Label Text="{Binding name_Chambre}"/>
-                                <Label Text="longitude" TextColor="Black" FontSize="Medium" />
+                                <Label Text="longitude" TextColor="Black"  />
                                 <Label Text="{Binding Longitude}"/>
-                                <Label Text="latitude" TextColor="Black" FontSize="Medium"/>
+                                <Label Text="latitude" TextColor="Black" />
                                 <Label Text="{Binding Latitude}"/>
                             </StackLayout>
                         </ViewCell>
@@ -63,8 +69,8 @@
             </ListView>
         </StackLayout>
     </ContentPage>
-
-
+    
+    
     <ContentPage Title="Ajouter utilisateur"  IconImageSource="adduser2">
         <StackLayout>
             <Entry x:Name="usernametxt" Placeholder="Ajouter Login"/>

@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="GEO.Chambers">
+    <ContentPage.Content Title="liste des Chambres"  IconImageSource="liste">
+        <StackLayout>
+            <Entry x:Name="idtxt" IsReadOnly="True" IsVisible="False" />
+            <Entry x:Name="namechambretxt" Placeholder="nom de la chambre" IsVisible="False" />
+            <Entry x:Name="longtudetxt" Placeholder="longitude" IsVisible="False"/>
+            <Entry x:Name="latitudetxt" Placeholder="latitude" IsVisible="False"/>
+            <Button Text="Ajouter"
+                    Clicked="Button_Clicked"
+                    TextColor="White" BackgroundColor="#487CEA"/>
+            <Button Text="Supprimer"
+                    Clicked="Button_Clicked_1"
+                    TextColor="White" BackgroundColor="#487CEA"/>
+            <Button Text="Modifier" 
+                    Clicked="Button_Clicked_2"
+                    TextColor="White" BackgroundColor="#487CEA"/>
+            <Button Text="voir la localisation de chambre"
+                   Clicked="Button_Clicked_3"/>
+            <ListView IsPullToRefreshEnabled="True"
+                      ItemTapped="ChambreListView2_ItemTapped"
+                      x:Name="ChambreListView2"
+                      RowHeight="200"
+                  SeparatorColor="DarkGray"
+                       >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="Id de chambre" TextColor="Black" />
+                                <Label Text="{Binding id_Chambre}"/>
+                                <Label Text="Nom de la  chambre" TextColor="Black" />
+                                <Label Text="{Binding name_Chambre}"/>
+                                <Label Text="longitude" TextColor="Black"  />
+                                <Label Text="{Binding Longitude}"/>
+                                <Label Text="latitude" TextColor="Black" />
+                                <Label Text="{Binding Latitude}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

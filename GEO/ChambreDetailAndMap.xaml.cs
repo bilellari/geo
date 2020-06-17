@@ -36,8 +36,8 @@ namespace GEO
                 {
                     Type = PinType.Place,
                     Position = mapPosition,
-                    Label = "city",
-                    Address = "country"
+                    Label = "",
+                    Address = ""
                 };
 
                 formMap.Pins.Add(mapPin);
@@ -48,8 +48,8 @@ namespace GEO
             Pin boardwalkPin = new Pin
             {
                 Position = new Position(lon, lat),
-                Label = "city",
-                Address = "country",
+                Label = "",
+                Address = "",
                 Type = PinType.Place
             };
             boardwalkPin.MarkerClicked += OnMarkerClickedAsync;
@@ -57,8 +57,8 @@ namespace GEO
             Pin wharfPin = new Pin
             {
                 Position = new Position(lon, lat),
-                Label = "city",
-                Address = "country",
+                Label = "",
+                Address = "",
                 Type = PinType.Place
             };
             wharfPin.InfoWindowClicked += OnInfoWindowClickedAsync;
@@ -71,13 +71,13 @@ namespace GEO
         {
             e.HideInfoWindow = true;
             string pinName = ((Pin)sender).Label;
-            await DisplayAlert("Pin Clicked", $"{pinName} was clicked.", "Ok");
+            await DisplayAlert("", $"{pinName}", "Ok");
         }
 
         async void OnInfoWindowClickedAsync(object sender, PinClickedEventArgs e)
         {
             string pinName = ((Pin)sender).Label;
-            await DisplayAlert("Info Window Clicked", $"The info window was clicked for {pinName}.", "Ok");
+            await DisplayAlert("", $" {pinName}.", "Ok");
         }
 
         void OnSliderValueChanged(object sender, ValueChangedEventArgs e)

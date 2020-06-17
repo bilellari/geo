@@ -7,39 +7,62 @@ using System.Data;
 using System.Data.SqlClient;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.Forms.Maps;
 
 namespace GEO
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AdminTabbedPage : TabbedPage
     {
-        private  string ch=string.Empty;
-        private  string tech=string.Empty;
+        private string ch = string.Empty;
+        private string tech = string.Empty;
+        
+
         public AdminTabbedPage()
         {
+            
             InitializeComponent();
+            ////this method refresh the page evry 10 second
+            //Device.StartTimer(TimeSpan.FromSeconds(10), () => {
+            //    // If you want to update UI, make sure its on the on the
+            //    Device.BeginInvokeOnMainThread(() => getchamberToPicker());
+            //    return true;
+            //});
+            //Device.StartTimer(TimeSpan.FromSeconds(10), () => {
+            //    // If you want to update UI, make sure its on the on the
+            //    Device.BeginInvokeOnMainThread(() => getTechnichianToPicker());
+            //    return true;
+            //});
             TechnichianPicker.ItemsSource = getTechnichianToPicker();
             chambrePicker.ItemsSource = getchamberToPicker();
-           ChambreListView.ItemsSource = getChambre();
+            ChambreListView.ItemsSource = getChambre();
             userListView.ItemsSource = GetUsers();
             ChambreListView.RefreshCommand = new Command(() =>
            {
                ChambreListView.ItemsSource = getChambre();
                ChambreListView.IsRefreshing = false;
-               
-          });
-           userListView.RefreshCommand = new Command(() =>
-            {
-               userListView.ItemsSource = GetUsers();
-               userListView.IsRefreshing = false;
+
            });
+            userListView.RefreshCommand = new Command(() =>
+             {
+                 userListView.ItemsSource = GetUsers();
+                 userListView.IsRefreshing = false;
+             });
         }
 
         public object ChamberNameEntry { get; private set; }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            getchamberToPicker();
+            getTechnichianToPicker();
+        }
+       
         private void Add_1(object sender, EventArgs e)
         {
-         
+            //we need to get the pin here while adding chamber
+           
             try
             {
                 if (!string.IsNullOrEmpty(nom_ch_txt.Text) && !string.IsNullOrEmpty(longitude_txt.Text) && !string.IsNullOrEmpty(latitude_txt.Text))
@@ -55,27 +78,28 @@ namespace GEO
                         cmd.Parameters.AddWithValue("@latitude", latitude);
                         cmd.ExecuteNonQuery();
                         con.Close();
-                        getchamberToPicker();
-                        DisplayAlert("alert", "you are added the new chambre", "ok");
+                        Application.Current.MainPage=new NavigationPage(new AdminTabbedPage());
+                        DisplayAlert("", "chambre ajoutée", "ok");
                         longitude_txt.Text = string.Empty;
                         nom_ch_txt.Text = string.Empty;
                         latitude_txt.Text = string.Empty;
                     }
                 else
                 {
-                    DisplayAlert("Oops", "fill the blanck before click", "Ok");
+                    DisplayAlert("", "remplir tous le formulaire", "Ok");
 
                 }
             }
             catch
             {
-                
-                DisplayAlert("Oops", "something went wrong", "ok");
+
+                DisplayAlert("", "erreur", "ok");
             }
 
         }
 
-        public IEnumerable<Chambre> getChambre()
+       
+                public IEnumerable<Chambre> getChambre()
         {
             List<Chambre> chambrelist = new List<Chambre>();
             using (SqlConnection con = new SqlConnection(connect.c))
@@ -100,7 +124,7 @@ namespace GEO
         {
             if (string.IsNullOrEmpty(idtxt.Text))
             {
-                DisplayAlert("Oops", "chose the chambre that you want to delete", "Ok");
+                DisplayAlert("Oops", "choisissez la chambre que vous souhaitez supprimer", "Ok");
             }
             else
             {
@@ -113,7 +137,7 @@ namespace GEO
                     con.Open();
                     command.ExecuteNonQuery();
                     con.Close();
-                    DisplayAlert("alert", "the chambre deleted successfuly", "Ok");
+                    DisplayAlert("", "chambre supprimée", "Ok");
                 }
             }
         }
@@ -128,15 +152,15 @@ namespace GEO
               string.IsNullOrEmpty(namechambretxt.Text)
               )
                 {
-                    DisplayAlert("Oops", "chose the chambre that you want to update", "Ok");
+                    DisplayAlert("", "choisissez la chambre que vous souhaitez modifier", "Ok");
                 }
                 else
                 {
                     using (SqlConnection con = new SqlConnection(connect.c))
                     {
                         Int32 key = Convert.ToInt32(idtxt.Text);
-                        string lomgtude = (longtudetxt.Text);
-                        string latitude = (latitudetxt.Text);
+                        double longitude = double.Parse(longtudetxt.Text.ToString());
+                        double latitude = double.Parse(latitudetxt.Text.ToString());
                         SqlCommand command = new SqlCommand
                             (
                             "update  [dbo].[Chambre] set [name_Chambre]=@name,[Longitude]=@lo,[Latitude]=@la where [id_Chambre]=@id",
@@ -144,27 +168,29 @@ namespace GEO
                             );
                         command.Parameters.AddWithValue("@id", key);
                         command.Parameters.AddWithValue("@name", namechambretxt.Text);
-                        command.Parameters.AddWithValue("@lo", lomgtude);
+                        command.Parameters.AddWithValue("@lo", longitude);
                         command.Parameters.AddWithValue("@la", latitude);
                         con.Open();
                         command.ExecuteNonQuery();
                         con.Close();
-                        DisplayAlert("alert", "the chambre updated successfuly", "Ok");
+                        DisplayAlert("", "chambre modifiée", "Ok");
                     }
                 }
             }
-            catch
+            catch (Exception exp)
             {
-                DisplayAlert("Oops", "something went wrong", "ok");
+                DisplayAlert("Oops", exp.Message, "ok");
             }
             //we miss something here look
-          
+
         }
+
+
 
         private void ChambreListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var item = (Chambre)e.Item;
-            Int32 id= Convert.ToInt32(item.id_Chambre);
+            Int32 id = Convert.ToInt32(item.id_Chambre);
             double lomgtude = double.Parse(item.Longitude.ToString());
             double latitude = double.Parse(item.Latitude.ToString());
             idtxt.Text = id.ToString();
@@ -177,31 +203,32 @@ namespace GEO
         {
             try
             {
-              
-                    using (SqlConnection con = new SqlConnection(connect.c))
-                    {
-                    
-                        
-                        con.Open();
-                        String st = "INSERT INTO [user]  ([username],[password],[role]) values (@username,@password,@role)";
-                        SqlCommand cmd = new SqlCommand(st, con);
-                    
-                     cmd.Parameters.AddWithValue("@username",usernametxt.Text);
+
+                using (SqlConnection con = new SqlConnection(connect.c))
+                {
+
+
+                    con.Open();
+                    String st = "INSERT INTO [user]  ([username],[password],[role]) values (@username,@password,@role)";
+                    SqlCommand cmd = new SqlCommand(st, con);
+
+                    cmd.Parameters.AddWithValue("@username", usernametxt.Text);
                     cmd.Parameters.AddWithValue("@password", passwordtxt.Text);
                     cmd.Parameters.AddWithValue("@role", rolePicker.SelectedItem.ToString());
                     cmd.ExecuteNonQuery();
-                        con.Close();
-                        DisplayAlert("alert", "you are added new user", "ok");
+                    con.Close();
+                    Application.Current.MainPage = new NavigationPage(new AdminTabbedPage());
+                    DisplayAlert("", "utilisateur ajouté", "ok");
                     usernametxt.Text = string.Empty;
                     passwordtxt.Text = string.Empty;
-                    rolePicker.Title = "select user type";
+                    rolePicker.Title = "Choisir le type d'utilisateur";
                     //done 
-                    }
-                
+                }
+
             }
             catch
             {
-                DisplayAlert("Oops", "something went wrong", "ok");
+                DisplayAlert("", "erreur", "ok");
             }
 
         }
@@ -231,7 +258,7 @@ namespace GEO
         {
             if (string.IsNullOrEmpty(idusertxt.Text))
             {
-                DisplayAlert("Oops", "chose the user that you want to delete", "Ok");
+                DisplayAlert("Oops", "Choisir utilisateur", "Ok");
             }
             else
             {
@@ -244,7 +271,7 @@ namespace GEO
                     con.Open();
                     command.ExecuteNonQuery();
                     con.Close();
-                    DisplayAlert("alert", "the user deleted successfuly", "Ok");
+                    DisplayAlert("alert", "utilisateur supprimé", "Ok");
                 }
             }
         }
@@ -257,7 +284,7 @@ namespace GEO
                string.IsNullOrEmpty(roleEditPicker.SelectedItem.ToString())
                )
             {
-                DisplayAlert("Oops", "chose the user that you want to update", "Ok");
+                DisplayAlert("", "Choisir un utilisateur", "Ok");
             }
             else
             {
@@ -276,7 +303,7 @@ namespace GEO
                     con.Open();
                     command.ExecuteNonQuery();
                     con.Close();
-                    DisplayAlert("alert", "the user updated successfuly", "Ok");
+                    DisplayAlert("", "utilisateur modifié", "Ok");
                 }
             }
         }
@@ -293,10 +320,10 @@ namespace GEO
             passwordEdittxt.Text = password.ToString();
             roleEditPicker.SelectedItem = role.ToString();
         }
-        
+
         public List<user> getTechnichianToPicker()
         {
-             List<user> usersList = new List<user>();
+            List<user> usersList = new List<user>();
             using (SqlConnection con = new SqlConnection(connect.c))
             {
                 SqlCommand command = new SqlCommand("getTechnichian", con);
@@ -347,32 +374,39 @@ namespace GEO
                         cmd.Parameters.AddWithValue("@tech", tech.ToString());
                         cmd.Parameters.AddWithValue("@chambre", ch.ToString());
                         cmd.Parameters.AddWithValue("@taskDescription", taskDescriptiontxt.Text);
-                        cmd.Parameters.AddWithValue("@status",true);
+                        cmd.Parameters.AddWithValue("@status", true);
                         cmd.ExecuteNonQuery();
                         con.Close();
-                        DisplayAlert("alert", "you are added the new task", "ok");
-                        chambrePicker.Title = "select chambre";
-                        TechnichianPicker.Title = "select Technichian";
+                        DisplayAlert("",
+                            "Tache ajoutée", "ok");
+                        chambrePicker.Title = "Choisir chambre";
+                        TechnichianPicker.Title = "Choisir Technichien";
                         taskDescriptiontxt.Text = string.Empty;
                     }
                 else
                 {
-                    DisplayAlert("Oops", "fill the blanck before click", "Ok");
+                    DisplayAlert("", "SVP Remplissez tout le formulaire", "Ok");
 
                 }
             }
             catch
             {
 
-                DisplayAlert("Oops", "something went wrong", "ok");
+                DisplayAlert("", "il ya une erreur", "ok");
             }
         }
 
         private void TechnichianPicker_SelectedIndexChanged(object sender, EventArgs e)
         {
+            userListView.RefreshCommand = new Command(() =>
+            {
+                userListView.ItemsSource = GetUsers();
+                userListView.IsRefreshing = true;
+            });
             var picker = sender as Picker;
             var selectedCategory = (user)picker.SelectedItem;
             tech = selectedCategory.username;
+
         }
 
         private void chambrePicker_SelectedIndexChanged(object sender, EventArgs e)
@@ -382,39 +416,85 @@ namespace GEO
             ch = selectedCategory.name_Chambre;
         }
 
-        private void MyTasksButton_Clicked(object sender, EventArgs e)
-        {
+        
 
+        private void Button_Clicked_5(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new Page1());
+    
+        }
+        
+        private void formMap_MapClicked(object sender, Xamarin.Forms.Maps.MapClickedEventArgs e)
+        {
+            formMap.Pins.Clear();
+            double latt = e.Position.Latitude;
+            double longg = e.Position.Longitude;
+            latitude_txt.Text = longg.ToString();
+            longitude_txt.Text = latt.ToString();
+
+            Position mapPosition = new Position(latt, longg);
+            Device.BeginInvokeOnMainThread(() =>
+            {
+
+                formMap.MoveToRegion(MapSpan.FromCenterAndRadius(mapPosition, Distance.FromMiles(3)));
+
+                var mapPin = new Pin
+                {
+                    Type = PinType.Place,
+                    Position = mapPosition,
+                    Label = "",
+                    Address = ""
+                };
+
+                formMap.Pins.Add(mapPin);
+
+            });
+
+
+            Pin boardwalkPin = new Pin
+            {
+                Position = new Position(latt, longg),
+                Label = "",
+                Address = "",
+                Type = PinType.Place
+            };
+            boardwalkPin.MarkerClicked += OnMarkerClickedAsync;
+
+            Pin wharfPin = new Pin
+            {
+                Position = new Position(latt, longg),
+                Label = "",
+                Address = "",
+                Type = PinType.Place
+            };
+            wharfPin.InfoWindowClicked += OnInfoWindowClickedAsync;
+
+            formMap.Pins.Add(boardwalkPin);
+            formMap.Pins.Add(wharfPin);
+
+           
+        }
+        async void OnMarkerClickedAsync(object sender, PinClickedEventArgs e)
+        {
+            e.HideInfoWindow = true;
+            string pinName = ((Pin)sender).Label;
+            await DisplayAlert("", $"{pinName} .", "Ok");
         }
 
-        private void addchambrButton_Clicked(object sender, EventArgs e)
+        async void OnInfoWindowClickedAsync(object sender, PinClickedEventArgs e)
         {
-
+            string pinName = ((Pin)sender).Label;
+            await DisplayAlert("", $" {pinName}.", "Ok");
         }
 
-        private void allchambrButton_Clicked(object sender, EventArgs e)
+        void OnSliderValueChanged(object sender, ValueChangedEventArgs e)
         {
+            double zoomLevel = e.NewValue;
+            double latlongDegrees = 360 / (Math.Pow(2, zoomLevel));
+            if (formMap.VisibleRegion != null)
+            {
 
-        }
-
-        private void addUuserButton_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
-        private void adduserButton_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
-        private void alluserButton_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
-        private void addtaskButton_Clicked(object sender, EventArgs e)
-        {
-
+            }
         }
     }
 }

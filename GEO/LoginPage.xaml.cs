@@ -39,7 +39,7 @@ namespace GEO
                         {
                             if (reader["role"].ToString() == "Admin")
                             {
-                                Navigation.PushModalAsync(new  AdminTabbedPage());
+                                Navigation.PushModalAsync(new AdminTabbedPage());
                             }
                             if (reader["role"].ToString() == "Technicien")
                             {

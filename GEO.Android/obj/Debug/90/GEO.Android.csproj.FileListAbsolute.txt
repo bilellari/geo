@@ -578,3 +578,4 @@ C:\GEO\GEO.Android\obj\Debug\90\stamp\_ConvertResourcesCases.stamp
 C:\GEO\GEO.Android\obj\Debug\90\stamp\_GenerateJavaStubs.stamp
 C:\GEO\GEO.Android\obj\Debug\90\stamp\_GeneratePackageManagerJava.stamp
 C:\GEO\GEO.Android\obj\Debug\90\stamp\_ResolveLibraryProjectImports.stamp
+C:\GEO\GEO.Android\obj\Debug\90\res\drawable\mapch.png

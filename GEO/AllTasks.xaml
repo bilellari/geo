@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="GEO.AllTasks">
+    <ContentPage.Content>
+        <StackLayout>
+            <Picker  x:Name="TechnichianPicker"
+                    Title="choisir Technicien"
+                     SelectedIndexChanged="TechnichianPicker_SelectedIndexChanged_1"
+                     ItemDisplayBinding="{Binding username}">
+            </Picker>
+            <Picker  x:Name="chambrePicker"
+                    Title="Choisir Chambre"
+                     SelectedIndexChanged="chambrePicker_SelectedIndexChanged"
+                     ItemDisplayBinding="{Binding name_Chambre}">
+            </Picker>
+            <Entry x:Name="taskDescriptiontxt" 
+                   Placeholder="Description de la tache"/>
+            <Button Text="ajouter tache" Clicked="Button_Clicked" TextColor="White" BackgroundColor="#487CEA"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
