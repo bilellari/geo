@@ -19,8 +19,23 @@
                 <Entry x:Name="longitude_txt" Placeholder="saisir la longitude"/>
                 <Entry x:Name="latitude_txt" Placeholder="saisir la latitude"/>
             <Button Text="ajouter chambre" Clicked="Add_1" BackgroundColor="#487CEA " TextColor="White"/>
-           
-            <maps:Map x:Name="formMap"  VerticalOptions="EndAndExpand" HeightRequest="400"  MapClicked="formMap_MapClicked"/>
+
+            <maps:Map x:Name="formMap"  VerticalOptions="EndAndExpand" HeightRequest="400"  MapClicked="formMap_MapClicked" MapType="Hybrid" >
+                <x:Arguments>
+                    <maps:MapSpan>
+                        <x:Arguments>
+                            <maps:Position>
+                                <x:Arguments>
+                                    <x:Double>34.751440</x:Double>
+                                    <x:Double>10.675077</x:Double>
+                                </x:Arguments>
+                            </maps:Position>
+                            <x:Double>0.01</x:Double>
+                            <x:Double>0.01</x:Double>
+                        </x:Arguments>
+                    </maps:MapSpan>
+                </x:Arguments>
+            </maps:Map>
         </StackLayout>
 
      

@@ -5,6 +5,7 @@ public class MonoPackageManager_Resources {
 		"GEO.Android.dll",
 		"FormsViewGroup.dll",
 		"GEO.dll",
+		"Lottie.Forms.dll",
 		"Plugin.CurrentActivity.dll",
 		"Plugin.Geolocator.dll",
 		"Plugin.Permissions.dll",

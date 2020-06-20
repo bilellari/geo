@@ -13,7 +13,8 @@
             <Entry x:Name="usernametxt" Placeholder="Login" BackgroundColor="White"   />
             <Entry x:Name="passwordtxt" Placeholder="Mot de passe" IsPassword="true" BackgroundColor="White"/>
             <Button Text="Se connecter" Clicked="Button_Clicked" BackgroundColor="#487CEA" TextColor="White"/>
-            
+            <ActivityIndicator x:Name="BusyIndicator" HorizontalOptions="Center" VerticalOptions="Center"
+                               Color="#FF5722" IsRunning="False"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

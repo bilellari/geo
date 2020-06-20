@@ -2,14 +2,33 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              mc:Ignorable="d"
              x:Class="GEO.addchamber">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+
+            <Entry x:Name="nomch_txt" Placeholder="saisir le nom de chambre"/>
+            <Entry x:Name="longitude_txt" Placeholder="saisir la longitude"/>
+            <Entry x:Name="latitude_txt" Placeholder="saisir la latitude"/>
+            <Button Text="ajouter chambre" Clicked="Button_Clicked" BackgroundColor="#487CEA " TextColor="White"/>
+
+            <maps:Map x:Name="formMap"  VerticalOptions="EndAndExpand" HeightRequest="400"  MapClicked="formMap_MapClicked" MapType="Hybrid" >
+                <x:Arguments>
+                    <maps:MapSpan>
+                        <x:Arguments>
+                            <maps:Position>
+                                <x:Arguments>
+                                    <x:Double>34.751440</x:Double>
+                                    <x:Double>10.675077</x:Double>
+                                </x:Arguments>
+                            </maps:Position>
+                            <x:Double>0.01</x:Double>
+                            <x:Double>0.01</x:Double>
+                        </x:Arguments>
+                    </maps:MapSpan>
+                </x:Arguments>
+            </maps:Map>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

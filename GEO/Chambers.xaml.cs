@@ -27,6 +27,8 @@ namespace GEO
 
             InitializeComponent();
             ChambreListView2.ItemsSource = getChambre();
+            BusyIndicator.IsRunning = false;
+
             ChambreListView2.RefreshCommand = new Command(() =>
             {
                 ChambreListView2.ItemsSource = getChambre();
@@ -54,9 +56,10 @@ namespace GEO
                     chambrelist.Add(c);
 
                 }
+                
                 return chambrelist;
+                
             }
-
 
 
 
@@ -101,12 +104,18 @@ namespace GEO
             {
                 DisplayAlert("Oops", "choisissez la chambre que vous souhaitez modifier", "Ok");
             }
-            else { Navigation.PushModalAsync(new UpdateChamber()); }
+            else
+            { 
+                Navigation.PushModalAsync(new UpdateChamber(int.Parse(idtxt.Text),namechambretxt.Text,
+                double.Parse(longtudetxt.Text)
+                , double.Parse(latitudetxt.Text))); 
+            }
             
         }
 
       public void ChambreListView2_ItemTapped(object sender, ItemTappedEventArgs e)
         {
+            
             var item = (Chambre)e.Item;
             Int32 id = Convert.ToInt32(item.id_Chambre);
             double lomgtude = double.Parse(item.Longitude.ToString());
@@ -119,7 +128,19 @@ namespace GEO
 
         private void Button_Clicked_3(object sender, EventArgs e)
         {
-
+            Navigation.PushModalAsync(new Page1());
+        }
+        ViewCell lastCell;
+        private void ViewCell_Tapped(object sender, EventArgs e)
+        {
+            if (lastCell != null)
+                lastCell.View.BackgroundColor = Color.Transparent;
+            var viewCell = (ViewCell)sender;
+            if (viewCell.View != null)
+            {
+                viewCell.View.BackgroundColor = Color.Blue;
+                lastCell = viewCell;
+            }
         }
     }
 }

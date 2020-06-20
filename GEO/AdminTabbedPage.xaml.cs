@@ -22,6 +22,10 @@ namespace GEO
         {
             
             InitializeComponent();
+            Position position = new Position(34.751440, 10.675077);
+            MapSpan mapSpan = new MapSpan(position, 0.01, 0.01);
+            Map map = new Map(mapSpan);
+
             ////this method refresh the page evry 10 second
             //Device.StartTimer(TimeSpan.FromSeconds(10), () => {
             //    // If you want to update UI, make sure its on the on the
@@ -431,7 +435,7 @@ namespace GEO
             double longg = e.Position.Longitude;
             latitude_txt.Text = longg.ToString();
             longitude_txt.Text = latt.ToString();
-
+           
             Position mapPosition = new Position(latt, longg);
             Device.BeginInvokeOnMainThread(() =>
             {

@@ -53,6 +53,7 @@ C:\GEO\GEO.Android\obj\Debug\90\android\bin\com.companyname.geo.apk
 C:\GEO\GEO.Android\obj\Debug\90\android\bin\base.zip
 C:\GEO\GEO.Android\obj\Debug\90\android\bin\com.companyname.geo.aab
 C:\GEO\GEO.Android\obj\Debug\90\android\bin\com.companyname.geo.apks
+C:\GEO\GEO.Android\obj\Debug\90\res\drawable\login.json
 C:\GEO\GEO.Android\obj\Debug\90\res\layout\tabbar.xml
 C:\GEO\GEO.Android\obj\Debug\90\res\layout\toolbar.xml
 C:\GEO\GEO.Android\obj\Debug\90\res\values\styles.xml
@@ -86,6 +87,7 @@ C:\GEO\GEO.Android\obj\Debug\90\res\drawable\listeuser.png
 C:\GEO\GEO.Android\obj\Debug\90\res\drawable\task.png
 C:\GEO\GEO.Android\obj\Debug\90\res\drawable\app.jpg
 C:\GEO\GEO.Android\obj\Debug\90\res\drawable\app2.jpg
+C:\GEO\GEO.Android\obj\Debug\90\res\drawable\mapch.png
 C:\GEO\GEO.Android\obj\Debug\90\uploadflags.txt
 C:\GEO\GEO.Android\obj\Debug\90\resolvedassemblies.hash
 C:\GEO\GEO.Android\obj\Debug\90\android\assets\FormsViewGroup.dll
@@ -95,6 +97,8 @@ C:\GEO\GEO.Android\obj\Debug\90\android\assets\GEO.Android.pdb
 C:\GEO\GEO.Android\obj\Debug\90\android\assets\GEO.dll
 C:\GEO\GEO.Android\obj\Debug\90\android\assets\GEO.pdb
 C:\GEO\GEO.Android\obj\Debug\90\android\assets\Java.Interop.dll
+C:\GEO\GEO.Android\obj\Debug\90\android\assets\Lottie.Forms.dll
+C:\GEO\GEO.Android\obj\Debug\90\android\assets\Lottie.Forms.pdb
 C:\GEO\GEO.Android\obj\Debug\90\android\assets\Mono.Android.dll
 C:\GEO\GEO.Android\obj\Debug\90\android\assets\Mono.Android.pdb
 C:\GEO\GEO.Android\obj\Debug\90\android\assets\Mono.Security.dll
@@ -578,4 +582,3 @@ C:\GEO\GEO.Android\obj\Debug\90\stamp\_ConvertResourcesCases.stamp
 C:\GEO\GEO.Android\obj\Debug\90\stamp\_GenerateJavaStubs.stamp
 C:\GEO\GEO.Android\obj\Debug\90\stamp\_GeneratePackageManagerJava.stamp
 C:\GEO\GEO.Android\obj\Debug\90\stamp\_ResolveLibraryProjectImports.stamp
-C:\GEO\GEO.Android\obj\Debug\90\res\drawable\mapch.png

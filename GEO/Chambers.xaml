@@ -27,10 +27,11 @@
                       x:Name="ChambreListView2"
                       RowHeight="200"
                   SeparatorColor="DarkGray"
+                    
                        >
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
+                        <ViewCell Tapped="ViewCell_Tapped">
                             <StackLayout>
                                 <Label Text="Id de chambre" TextColor="Black" />
                                 <Label Text="{Binding id_Chambre}"/>
@@ -45,6 +46,8 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <ActivityIndicator x:Name="BusyIndicator" HorizontalOptions="Center" VerticalOptions="Center"
+                               Color="#FF5722" IsRunning="True"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

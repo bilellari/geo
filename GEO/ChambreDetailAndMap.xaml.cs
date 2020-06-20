@@ -71,13 +71,13 @@ namespace GEO
         {
             e.HideInfoWindow = true;
             string pinName = ((Pin)sender).Label;
-            await DisplayAlert("", $"{pinName}", "Ok");
+            await DisplayAlert("", $"{Chambre.name_Chambre}", "Ok");
         }
 
         async void OnInfoWindowClickedAsync(object sender, PinClickedEventArgs e)
         {
             string pinName = ((Pin)sender).Label;
-            await DisplayAlert("", $" {pinName}.", "Ok");
+            await DisplayAlert("", $" {Chambre.name_Chambre}.", "Ok");
         }
 
         void OnSliderValueChanged(object sender, ValueChangedEventArgs e)

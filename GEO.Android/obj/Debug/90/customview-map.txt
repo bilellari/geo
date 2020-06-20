@@ -21,12 +21,14 @@ background;obj\Debug\90\res\mipmap-anydpi-v26\icon.xml
 background;obj\Debug\90\res\mipmap-anydpi-v26\icon_round.xml
 cache-path;C:\GEO\GEO.Android\obj\Debug\90\lp\41\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 color;obj\Debug\90\res\values\colors.xml
+color;obj\Debug\90\res\values\styles.xml
 external-cache-path;C:\GEO\GEO.Android\obj\Debug\90\lp\41\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 external-path;C:\GEO\GEO.Android\obj\Debug\90\lp\41\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 foreground;obj\Debug\90\res\mipmap-anydpi-v26\icon.xml
 foreground;obj\Debug\90\res\mipmap-anydpi-v26\icon_round.xml
 FrameLayout;C:\GEO\GEO.Android\obj\Debug\90\lp\43\jl\res\layout\bottomtablayout.xml
 item;C:\GEO\GEO.Android\obj\Debug\90\lp\43\jl\res\values\styles.xml
+item;obj\Debug\90\res\values\colors.xml
 item;obj\Debug\90\res\values\styles.xml
 LinearLayout;C:\GEO\GEO.Android\obj\Debug\90\lp\43\jl\res\layout\bottomtablayout.xml
 paths;C:\GEO\GEO.Android\obj\Debug\90\lp\41\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
@@ -38,6 +40,7 @@ set;C:\GEO\GEO.Android\obj\Debug\90\lp\43\jl\res\anim\enterfromright.xml
 set;C:\GEO\GEO.Android\obj\Debug\90\lp\43\jl\res\anim\exittoleft.xml
 set;C:\GEO\GEO.Android\obj\Debug\90\lp\43\jl\res\anim\exittoright.xml
 style;C:\GEO\GEO.Android\obj\Debug\90\lp\43\jl\res\values\styles.xml
+style;obj\Debug\90\res\values\colors.xml
 style;obj\Debug\90\res\values\styles.xml
 translate;C:\GEO\GEO.Android\obj\Debug\90\lp\43\jl\res\anim\enterfromleft.xml
 translate;C:\GEO\GEO.Android\obj\Debug\90\lp\43\jl\res\anim\enterfromright.xml

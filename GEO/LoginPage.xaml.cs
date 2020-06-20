@@ -22,6 +22,7 @@ namespace GEO
         {
             try
             {
+                BusyIndicator.IsRunning = true;
                 if (!string.IsNullOrEmpty(usernametxt.Text) && !string.IsNullOrEmpty(passwordtxt.Text))
                 {
                     using (SqlConnection con = new SqlConnection(connect.c))
@@ -39,24 +40,28 @@ namespace GEO
                         {
                             if (reader["role"].ToString() == "Admin")
                             {
-                                Navigation.PushModalAsync(new AdminTabbedPage());
+                               
+                                Navigation.PushModalAsync(new MasterDetailPage1());
+                                BusyIndicator.IsRunning = false;
                             }
                             if (reader["role"].ToString() == "Technicien")
                             {
                                 Navigation.PushModalAsync(new TechnicianPage());
+                                BusyIndicator.IsRunning = false;
                             }
                             Preferences.Set("username", usernametxt.Text);
                         }
                         else
                         {
                             DisplayAlert("Oops", "invalid username or password", "Ok");
+                            BusyIndicator.IsRunning = false;
                         }
                     }
                 }
                 else
                 {
                     DisplayAlert("Oops", "fill the blanck before click", "Ok");
-
+                    BusyIndicator.IsRunning = false;
                 }
             }
             catch

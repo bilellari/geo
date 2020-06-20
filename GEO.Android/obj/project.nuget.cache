@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "40IMmOOSln0KDTj19bojo4L6ufHGrKd4/7SsTNMImNfy8IJ+7reCaM/taghr0g0a71IsJdCuQlqBaDi6q79ECg==",
+  "dgSpecHash": "CdNkYzhKjkUlsukIY1XHQ92iVtZCXjrd0VgviXq9J5PiMty+UhkAy8z0nTg3u9v/p14q8fTSG2orOcVfu0icXA==",
   "success": true,
   "projectFilePath": "C:\\GEO\\GEO.Android\\GEO.Android.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\bilel_marzougui\\.nuget\\packages\\com.airbnb.xamarin.forms.lottie\\3.1.2\\com.airbnb.xamarin.forms.lottie.3.1.2.nupkg.sha512",
     "C:\\Users\\bilel_marzougui\\.nuget\\packages\\plugin.currentactivity\\2.1.0.2\\plugin.currentactivity.2.1.0.2.nupkg.sha512",
     "C:\\Users\\bilel_marzougui\\.nuget\\packages\\plugin.permissions\\3.0.0.12\\plugin.permissions.3.0.0.12.nupkg.sha512",
     "C:\\Users\\bilel_marzougui\\.nuget\\packages\\system.data.common\\4.3.0\\system.data.common.4.3.0.nupkg.sha512",
