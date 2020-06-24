@@ -7,9 +7,53 @@
              x:Class="GEO.AllTechnicians">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to AllTechnicians"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Entry x:Name="idusertxt" IsReadOnly="True" IsVisible="False"/>
+            <Entry x:Name="nomuser" Placeholder="Saisir nom" IsVisible="False" />
+            <Entry x:Name="prenomuser" Placeholder="Saisir prenom"  IsVisible="False" />
+            <Entry x:Name="teluser" Placeholder="Saisir numero de télepone" IsVisible="False"  />
+            <Entry x:Name="usernameEdittxt" Placeholder="Login" IsVisible="False" />
+            <Entry x:Name="passwordEdittxt" Placeholder="Mot de passe" IsVisible="False"/>
+            <Picker  x:Name="roleEditPicker"
+                    Title="Role" IsVisible="False">
+                <Picker.Items>
+                    <x:String>Admin</x:String>
+                    <x:String>Technicien</x:String>
+                </Picker.Items>
+            </Picker>
+            <Button Text="ajouter"
+                    x:Name="btnaddUser"
+                    Clicked="btnaddUser_Clicked"
+                    TextColor="White" BackgroundColor="#487CEA"/>
+            <Button Text="supprimer"
+                    x:Name="btnDeleteUser"
+                    Clicked="btnDeleteUser_Clicked"
+                    TextColor="White" BackgroundColor="#487CEA"/>
+            <Button Text="modifier" 
+                    x:Name="btnEditUser"
+                    Clicked="btnEditUser_Clicked"
+                    TextColor="White" BackgroundColor="#487CEA"/>
+            <ListView IsPullToRefreshEnabled="True"
+                      ItemTapped="userListView_ItemTapped"
+                      x:Name="userListView"
+                      RowHeight="200"
+                  SeparatorColor="Black">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell Tapped="ViewCell_Tapped_1">
+                            <StackLayout>
+                                <Label Text="Nom" TextColor="Black" />
+                                <Label Text="{Binding nom}" />
+                                <Label Text="Prenom" TextColor="Black" />
+                                <Label Text="{Binding prenom}" />
+                                <Label Text="tel" TextColor="Black" />
+                                <Label Text="{Binding tel}"/>
+                                <Label Text="role" TextColor="Black"  />
+                                <Label Text="{Binding role}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

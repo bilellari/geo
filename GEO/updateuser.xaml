@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="GEO.updateuser">
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry x:Name="idusertxt" IsReadOnly="True" IsVisible="False"/>
+            <Entry x:Name="nomuser" Placeholder="Saisir nom"  />
+            <Entry x:Name="prenomuser" Placeholder="Saisir prenom"  />
+            <Entry x:Name="teluser" Placeholder="Saisir numero de télepone"  />
+            <Entry x:Name="usernameEdittxt" Placeholder="Login"  />
+            <Entry x:Name="passwordEdittxt" Placeholder="Mot de passe" />
+            <Entry x:Name="confimrerpadd" Placeholder="Confirmer votre Mot de passe "/>
+            <Picker  x:Name="roleEditPicker"
+            Title="Role">
+            <Picker.Items>
+                <x:String>Admin</x:String>
+                <x:String>Technicien</x:String>
+            </Picker.Items>
+            </Picker>
+            <Button Text="modifier utilisateur" Clicked="Button_Clicked" BackgroundColor="#487CEA " TextColor="White" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

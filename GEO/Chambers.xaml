@@ -21,7 +21,7 @@
                     Clicked="Button_Clicked_2"
                     TextColor="White" BackgroundColor="#487CEA"/>
             <Button Text="voir la localisation de chambre"
-                   Clicked="Button_Clicked_3"/>
+                   Clicked="Button_Clicked_3" TextColor="White" BackgroundColor="#487CEA"/>
             <ListView IsPullToRefreshEnabled="True"
                       ItemTapped="ChambreListView2_ItemTapped"
                       x:Name="ChambreListView2"

@@ -27,3 +27,5 @@ C:\GEO\GEO\obj\Debug\netstandard2.0\GEO.dll
 C:\GEO\GEO\obj\Debug\netstandard2.0\ref\GEO.dll
 C:\GEO\GEO\obj\Debug\netstandard2.0\GEO.pdb
 C:\GEO\GEO\obj\Debug\netstandard2.0\GEO.csprojAssemblyReference.cache
+C:\GEO\GEO\obj\Debug\netstandard2.0\adduser.xaml.g.cs
+C:\GEO\GEO\obj\Debug\netstandard2.0\updateuser.xaml.g.cs

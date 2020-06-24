@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="GEO.MasterDetailPage1Master"
              Title="Master"  >
-    <StackLayout  BackgroundColor="#6993C6 " >
+    <StackLayout  BackgroundColor="#6993C6 "  >
     <ListView x:Name="MenuItemsListView"
               SeparatorVisibility="Default"
               SeparatorColor="Black"
@@ -17,8 +17,8 @@
                     <x:String>Chambres</x:String>
                     <x:String>Techniciens</x:String>
                     <x:String>Tâches</x:String>
-             
-          </x:Array>
+                   
+                </x:Array>
       </d:ListView.ItemsSource>
       <ListView.Header >
                 <Grid BackgroundColor="#86A8D0   " >

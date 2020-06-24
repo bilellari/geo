@@ -7,6 +7,28 @@
              x:Class="GEO.AllTasks">
     <ContentPage.Content>
         <StackLayout>
+            <ListView IsPullToRefreshEnabled="True"
+                     
+                      x:Name="userListView"
+                      RowHeight="200"
+                  SeparatorColor="Black" IsVisible="False">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="id user" TextColor="Black" />
+                                <Label Text="{Binding id}" />
+                                <Label Text="username" TextColor="Black" />
+                                <Label Text="{Binding username}" />
+                                <Label Text="password" TextColor="Black" />
+                                <Label Text="{Binding password}" />
+                                <Label Text="role" TextColor="Black"  />
+                                <Label Text="{Binding role}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
             <Picker  x:Name="TechnichianPicker"
                     Title="choisir Technicien"
                      SelectedIndexChanged="TechnichianPicker_SelectedIndexChanged_1"

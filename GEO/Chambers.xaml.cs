@@ -138,8 +138,9 @@ namespace GEO
             var viewCell = (ViewCell)sender;
             if (viewCell.View != null)
             {
-                viewCell.View.BackgroundColor = Color.Blue;
+                viewCell.View.BackgroundColor = Color.FromHex("#6993C6");
                 lastCell = viewCell;
+                
             }
         }
     }
