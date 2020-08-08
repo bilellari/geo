@@ -29,10 +29,10 @@ namespace GEO
                     {
                         SqlCommand command = new SqlCommand
                             (
-                            "SELECT * FROM [user] WHERE username=@username AND password=@password "
+                            "SELECT * FROM [user] WHERE nomETprenom=@nomETprenom AND password=@password "
                             , con
                             );
-                        command.Parameters.AddWithValue("@username", usernametxt.Text);
+                        command.Parameters.AddWithValue("@nomETprenom", usernametxt.Text);
                         command.Parameters.AddWithValue("@password", passwordtxt.Text);
                         con.Open();
                         SqlDataReader reader = command.ExecuteReader();
@@ -40,33 +40,31 @@ namespace GEO
                         {
                             if (reader["role"].ToString() == "Admin")
                             {
-                               
-                                Navigation.PushModalAsync(new MasterDetailPage1());
+                                Navigation.PushAsync(new MasterDetailPage1());
                                 BusyIndicator.IsRunning = false;
                             }
                             if (reader["role"].ToString() == "Technicien")
                             {
-                                Navigation.PushModalAsync(new TechnicianPage());
-                                BusyIndicator.IsRunning = false;
+                                Navigation.PushAsync(new TechnicianPage());
                             }
                             Preferences.Set("username", usernametxt.Text);
                         }
                         else
                         {
-                            DisplayAlert("Oops", "invalid username or password", "Ok");
+                            DisplayAlert("", "Login ou mot de passe incorrectes", "Ok");
                             BusyIndicator.IsRunning = false;
                         }
                     }
                 }
                 else
                 {
-                    DisplayAlert("Oops", "fill the blanck before click", "Ok");
+                    DisplayAlert("Login ou mot de passe manquant", "Veuillez entrer votre login et votre mot de passe", "Ok");
                     BusyIndicator.IsRunning = false;
                 }
             }
             catch
             {
-                DisplayAlert("Oops", "something went wrong", "ok");
+                DisplayAlert("", "impossible de se connecter", "ok");
             }
 
         }

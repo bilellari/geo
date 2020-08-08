@@ -7,13 +7,20 @@
              x:Class="GEO.updateuser">
     <ContentPage.Content>
         <StackLayout>
+            <Label x:Name="fakelbl" IsVisible="False"/>
+            <Label x:Name="nfakelbl" />
             <Entry x:Name="idusertxt" IsReadOnly="True" IsVisible="False"/>
-            <Entry x:Name="nomuser" Placeholder="Saisir nom"  />
-            <Entry x:Name="prenomuser" Placeholder="Saisir prenom"  />
-            <Entry x:Name="teluser" Placeholder="Saisir numero de télepone"  />
-            <Entry x:Name="usernameEdittxt" Placeholder="Login"  />
-            <Entry x:Name="passwordEdittxt" Placeholder="Mot de passe" />
-            <Entry x:Name="confimrerpadd" Placeholder="Confirmer votre Mot de passe "/>
+            
+            <Entry x:Name="nom_prenom" Placeholder="Saisir le prenom et le prenom"  />
+            <Entry x:Name="cintxt"   Placeholder=" Saisir le Cin" Keyboard="Numeric" />
+            <DatePicker x:Name="dateOfBirth" MinimumDate="01/01/1962"
+            MaximumDate="12/31/2000"
+            Date="07/23/2020" DateSelected="dateOfBirth_DateSelected" />
+            <Entry x:Name="adresstxt" Placeholder="Saisir l'adresse"  />
+            <Entry x:Name="emailuser" Placeholder="Saisir  l'email" Keyboard="Email"  />
+            <Entry x:Name="teluser" Placeholder="Saisir le  numero de télepone" Keyboard="Telephone"  />
+           <Entry x:Name="passwordEdittxt" Placeholder="Mot de passe" IsPassword="True"/>
+            <Entry x:Name="confimrerpadd" Placeholder="Confirmer votre Mot de passe " IsPassword="True"/>
             <Picker  x:Name="roleEditPicker"
             Title="Role">
             <Picker.Items>

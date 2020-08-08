@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29920.165
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GEO.Android", "GEO.Android\GEO.Android.csproj", "{CA4948FF-F079-4660-A7E0-95030FC81E1C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GEO", "GEO\GEO.csproj", "{FE945A02-30B4-4164-BEA3-BDB011CB5509}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GEO", "GEO\GEO.csproj", "{FE945A02-30B4-4164-BEA3-BDB011CB5509}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

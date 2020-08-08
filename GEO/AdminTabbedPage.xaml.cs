@@ -249,7 +249,7 @@ namespace GEO
                 {
                     user u = new user();
                     u.id = Convert.ToInt32(reader["id"].ToString());
-                    u.username = reader["username"].ToString();
+                    u.nomprenom = reader["nomETprenom"].ToString();
                     u.password = reader["password"].ToString();
                     u.role = reader["role"].ToString();
                     usersList.Add(u);
@@ -316,11 +316,11 @@ namespace GEO
         {
             var item = (user)e.Item;
             Int32 id = Convert.ToInt32(item.id);
-            string username = Convert.ToString(item.username);
+            string nomprenom = Convert.ToString(item.nomprenom);
             string password = Convert.ToString(item.password);
             string role = item.role;
             idusertxt.Text = id.ToString();
-            usernameEdittxt.Text = username.ToString();
+            usernameEdittxt.Text = nomprenom.ToString();
             passwordEdittxt.Text = password.ToString();
             roleEditPicker.SelectedItem = role.ToString();
         }
@@ -337,7 +337,7 @@ namespace GEO
                 while (reader.Read())
                 {
                     user u = new user();
-                    u.username = reader["username"].ToString();
+                    u.nomprenom = reader["nomETprenom"].ToString();
                     usersList.Add(u);
                 }
                 return usersList;
@@ -409,7 +409,7 @@ namespace GEO
             });
             var picker = sender as Picker;
             var selectedCategory = (user)picker.SelectedItem;
-            tech = selectedCategory.username;
+            tech = selectedCategory.nomprenom;
 
         }
 

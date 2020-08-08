@@ -11,6 +11,10 @@
             <Entry x:Name="namechambretxt" Placeholder="nom de la chambre" IsVisible="False" />
             <Entry x:Name="longtudetxt" Placeholder="longitude" IsVisible="False"/>
             <Entry x:Name="latitudetxt" Placeholder="latitude" IsVisible="False"/>
+            <Entry x:Name="cable1etxt"  IsVisible="False"/>
+            <Entry x:Name="cable2txt"  IsVisible="False"/>
+            <Entry x:Name="cable3txt"  IsVisible="False"/>
+            <SearchBar x:Name="chbrSearchBar" VerticalOptions="Center" TextChanged="chbrSearchBar_TextChanged" HorizontalOptions="Center"   Placeholder="Chercher chambre"   FontSize="Medium" />
             <Button Text="Ajouter"
                     Clicked="Button_Clicked"
                     TextColor="White" BackgroundColor="#487CEA"/>
@@ -27,7 +31,7 @@
                       x:Name="ChambreListView2"
                       RowHeight="200"
                   SeparatorColor="DarkGray"
-                    
+                    BackgroundColor="#999C9C"
                        >
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -37,15 +41,16 @@
                                 <Label Text="{Binding id_Chambre}"/>
                                 <Label Text="Nom de la  chambre" TextColor="Black" />
                                 <Label Text="{Binding name_Chambre}"/>
-                                <Label Text="longitude" TextColor="Black"  />
-                                <Label Text="{Binding Longitude}"/>
-                                <Label Text="latitude" TextColor="Black" />
-                                <Label Text="{Binding Latitude}"/>
+                                <Label Text="Les Cables" TextColor="Black"  />
+                                <Label Text="{Binding allcable}"/>
+                               
+                                
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            
             <ActivityIndicator x:Name="BusyIndicator" HorizontalOptions="Center" VerticalOptions="Center"
                                Color="#FF5722" IsRunning="True"/>
         </StackLayout>

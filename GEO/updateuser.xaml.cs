@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Plugin.Geolocator.Abstractions;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -14,23 +15,31 @@ namespace GEO
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class updateuser : ContentPage
     {
-        public updateuser( int id,string nom,string prenom , int tel,string login, string pass, string role )
+        public updateuser( double id,string nomprenom, string cin, String dateofbirth,string adress,string email,int tel, string pass, string role )
         {
             InitializeComponent();
             idusertxt.Text = id.ToString();
-            nomuser.Text = nom;
-            prenomuser.Text = prenom;
+            nom_prenom.Text = nomprenom;
+            cintxt.Text = cin;
+           fakelbl.Text = dateofbirth;
+            adresstxt.Text = adress;
+            emailuser.Text = email;
             teluser.Text = tel.ToString();
-            usernameEdittxt.Text = login;
             passwordEdittxt.Text = pass;
             roleEditPicker.SelectedItem = role.ToString();
         }
 
+        DatePicker datePicker = new DatePicker
+        {
+            MinimumDate = new DateTime(2018, 1, 1),
+            MaximumDate = new DateTime(2018, 12, 31),
+            Date = new DateTime(2018, 6, 21)
+
+        };
         private void Button_Clicked(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(idusertxt.Text) ||
-              string.IsNullOrEmpty(usernameEdittxt.Text) ||
-              string.IsNullOrEmpty(passwordEdittxt.Text) ||
+             string.IsNullOrEmpty(passwordEdittxt.Text) ||
               string.IsNullOrEmpty(roleEditPicker.SelectedItem.ToString())
               )
             {
@@ -45,25 +54,33 @@ namespace GEO
             {
                 using (SqlConnection con = new SqlConnection(connect.c))
                 {
-                    Int32 key = Convert.ToInt32(idusertxt.Text);
+                    double key = Convert.ToInt64(idusertxt.Text);
                     SqlCommand command = new SqlCommand
                         (
-                        "update  [dbo].[user] set [nom]=@nom,[prenom]=@prenom,[tel]=@tel,[username]=@username,[password]=@password,[role]=@role where [id]=@id",
+                        "update  [dbo].[user] set [nomETprenom]=@nomprenom,[cin]=@cin,[date_naiss]=@dateOFbirth,[adress]=@adress,[email]=@email,[tel]=@tel,[password]=@password,[role]=@role where [id]=@id",
                         con
                         );
                     command.Parameters.AddWithValue("@id", key);
-                    command.Parameters.AddWithValue("@nom", nomuser.Text);
-                    command.Parameters.AddWithValue("@prenom", prenomuser.Text);
+                    command.Parameters.AddWithValue("@nomprenom", nom_prenom.Text);
+                    command.Parameters.AddWithValue("@cin", cintxt.Text);
+                    command.Parameters.AddWithValue("@dateOFbirth", fakelbl.Text);
+                    command.Parameters.AddWithValue("@adress", adresstxt.Text);
+                    command.Parameters.AddWithValue("@email", emailuser.Text);
                     command.Parameters.AddWithValue("@tel", teluser.Text);
-                    command.Parameters.AddWithValue("@username", usernameEdittxt.Text);
-                    command.Parameters.AddWithValue("@password", passwordEdittxt.Text);
+                   command.Parameters.AddWithValue("@password", passwordEdittxt.Text);
                     command.Parameters.AddWithValue("@role", roleEditPicker.SelectedItem.ToString());
                     con.Open();
                     command.ExecuteNonQuery();
                     con.Close();
-                    DisplayAlert("", "utilisateur modifié", "Ok");
+                    DisplayAlert("", "technicien modifié", "Ok");
+                    App.Current.MainPage = new AllTechnicians();
                 }
             }
+        }
+
+        private void dateOfBirth_DateSelected(object sender, DateChangedEventArgs e)
+        {
+            fakelbl.Text = e.NewDate.ToString();
         }
     }
 }

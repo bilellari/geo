@@ -10,5 +10,12 @@ namespace GEO
         public string name_Chambre { get; set; }
         public double Longitude { get; set; }
         public double Latitude { get; set; }
+        public string Cable1 { get; set; }
+        public string Cable2 { get; set; }
+        public string Cable3 { get; set; }
+        public string allcable { get; set; }
+
+
+
     }
 }

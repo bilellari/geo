@@ -7,12 +7,18 @@ namespace GEO
     public class user
     {
 
-        public int id { get; set; }
-        public string nom{ get; set; }
-        public string prenom { get; set; }
+        public double id { get; set; }
+        public string nomprenom{ get; set; }
+        
+        public string cin { get; set; }
+        public DateTime datebirth { get; set; }
+        public string adress { get; set; }
+        public string email { get; set; }
         public string tel { get; set; } 
-        public string username { get; set; }
+        
+      
         public string password { get; set; }
         public string role { get; set; }
+
     }
 }

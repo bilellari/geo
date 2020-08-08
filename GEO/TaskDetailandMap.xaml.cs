@@ -15,12 +15,26 @@ namespace GEO
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TaskDetailandMap : ContentPage
     {
+        public class MyTache
+        {
+
+            public int id { get; set; }
+            public string technichian { get; set; }
+            public string chambre { get; set; }
+            public string TaskDescription { get; set; }
+            public bool status { get; set; }
+            public Color BackgroundColor { get; internal set; }
+            public bool isAdded { get; set; } = false;
+
+        }
         double lo, la;
         public TaskDetailandMap(int idcame)
         {
             InitializeComponent();
             getTask(idcame);
             getLongtudeandLatitude();
+            Position position = new Position(34.751440, 10.675077);
+            formMap.MoveToRegion(MapSpan.FromCenterAndRadius(position, Distance.FromMiles(3)));
         }
         public void getTask(int id)
         {
@@ -50,8 +64,8 @@ namespace GEO
                 {
                     lo = double.Parse(reader["Longitude"].ToString());
                     la = double.Parse( reader["Latitude"].ToString());
-                    string changedlongtude = lo.ToString("#,##0.00");
-                    string changedlatitude = la.ToString("#,##0.00");
+                    string changedlongtude = lo.ToString();
+                    string changedlatitude = la.ToString();
                     longtudetxt.Text = changedlongtude.ToString();
                     latitudetxt.Text = changedlatitude.ToString();                }
             }
@@ -123,6 +137,13 @@ namespace GEO
             {
                 formMap.MoveToRegion(new MapSpan(formMap.VisibleRegion.Center, latlongDegrees, latlongDegrees));
             }
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            MyTache c = new MyTache();
+            c.status = false;
+            DisplayAlert("", "la tache est marqueé finie", "ok");
         }
 
         void OnButtonClicked(object sender, EventArgs e)

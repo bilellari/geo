@@ -17,7 +17,8 @@
                     <x:String>Chambres</x:String>
                     <x:String>Techniciens</x:String>
                     <x:String>Tâches</x:String>
-                   
+                    <x:String>Câbles</x:String>
+
                 </x:Array>
       </d:ListView.ItemsSource>
       <ListView.Header >

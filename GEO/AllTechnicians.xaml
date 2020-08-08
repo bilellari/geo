@@ -7,11 +7,16 @@
              x:Class="GEO.AllTechnicians">
     <ContentPage.Content>
         <StackLayout>
+            <Label x:Name="fakelbl" IsVisible="False"/>
             <Entry x:Name="idusertxt" IsReadOnly="True" IsVisible="False"/>
-            <Entry x:Name="nomuser" Placeholder="Saisir nom" IsVisible="False" />
-            <Entry x:Name="prenomuser" Placeholder="Saisir prenom"  IsVisible="False" />
-            <Entry x:Name="teluser" Placeholder="Saisir numero de télepone" IsVisible="False"  />
-            <Entry x:Name="usernameEdittxt" Placeholder="Login" IsVisible="False" />
+            <Entry x:Name="nom_prenom" Placeholder="Saisir nom" IsVisible="False"  />
+            <Entry x:Name="cincxt" IsReadOnly="True" IsVisible="False"/>
+            <DatePicker x:Name="dateOfBirth" MinimumDate="01/01/1962"
+            MaximumDate="12/31/2000"
+            Date="07/23/2020"  IsVisible="False"/>
+            <Entry x:Name="adresstxt" Placeholder="Saisir l'adresse" IsVisible="False" />
+            <Entry x:Name="emailtxt" IsReadOnly="True" IsVisible="False"/>
+            <Entry x:Name="teluser" Placeholder="Saisir numero de télepone" IsVisible="False" />
             <Entry x:Name="passwordEdittxt" Placeholder="Mot de passe" IsVisible="False"/>
             <Picker  x:Name="roleEditPicker"
                     Title="Role" IsVisible="False">
@@ -20,6 +25,7 @@
                     <x:String>Technicien</x:String>
                 </Picker.Items>
             </Picker>
+            <SearchBar x:Name="techSearchBar" VerticalOptions="Center" TextChanged="techSearchBar_TextChanged" HorizontalOptions="Center"   Placeholder="Chercher technicien"   FontSize="Medium" />
             <Button Text="ajouter"
                     x:Name="btnaddUser"
                     Clicked="btnaddUser_Clicked"
@@ -41,14 +47,13 @@
                     <DataTemplate>
                         <ViewCell Tapped="ViewCell_Tapped_1">
                             <StackLayout>
-                                <Label Text="Nom" TextColor="Black" />
-                                <Label Text="{Binding nom}" />
-                                <Label Text="Prenom" TextColor="Black" />
-                                <Label Text="{Binding prenom}" />
+                                <Label Text="Nom et prenom" TextColor="Black" />
+                                <Label Text="{Binding nomprenom}" />
+                                <Label Text="{Binding datebirth}"/>
                                 <Label Text="tel" TextColor="Black" />
                                 <Label Text="{Binding tel}"/>
-                                <Label Text="role" TextColor="Black"  />
-                                <Label Text="{Binding role}"/>
+                                <Label Text="email" TextColor="Black"  />
+                                <Label Text="{Binding email}"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

@@ -20,24 +20,27 @@
                    TextColor="Blue"
                    TranslationY="20"
                    />
+            <ScrollView>
             <ListView TranslationY="15"
                 IsPullToRefreshEnabled="True"
                       ItemSelected="TasksListView_ItemSelected"
                       x:Name="TasksListView"
-                      RowHeight="50"
+                      RowHeight="100"
                   SeparatorColor="Blue"
+                    
                 >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout>
+                            <StackLayout BackgroundColor="{Binding BackgroundColor}">
                                 <Label Text="{Binding chambre}"/>
-                                <Label Text="{Binding TaskDescription}"/>
+                                <Label Text="{Binding TaskDescription }"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            </ScrollView> 
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

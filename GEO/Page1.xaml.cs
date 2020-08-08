@@ -61,6 +61,7 @@ namespace GEO
 
         private void ChambreListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
+
             var chambreDetails = new ChambreDetailAndMap((Chambre)e.SelectedItem);
             Navigation.PushModalAsync(chambreDetails);
         }

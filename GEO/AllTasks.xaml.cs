@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.Xaml;
 
 namespace GEO
@@ -15,10 +16,12 @@ namespace GEO
     {
         private string ch = string.Empty;
         private string tech = string.Empty;
-       
+
+        
 
         public AllTasks()
         {
+           
             InitializeComponent();
             TechnichianPicker.ItemsSource = getTechnichianToPicker();
             chambrePicker.ItemsSource = getchamberToPicker();
@@ -44,11 +47,12 @@ namespace GEO
                         cmd.Parameters.AddWithValue("@status", true);
                         cmd.ExecuteNonQuery();
                         con.Close();
-                        DisplayAlert("",
-                            "Tache ajoutée", "ok");
-                      
+                        DisplayAlert("", "Tache ajoutée", "ok");
+
                        
+
                     }
+                    
                 }
                 else
                 {
@@ -76,7 +80,7 @@ namespace GEO
             });
             var picker = sender as Picker;
             var selectedCategory = (user)picker.SelectedItem;
-            tech = selectedCategory.username;
+            tech = selectedCategory.nomprenom;
 
         }
 
@@ -115,7 +119,9 @@ namespace GEO
                 while (reader.Read())
                 {
                     user u = new user();
-                    u.username = reader["username"].ToString();
+                    u.nomprenom= reader["nomETprenom"].ToString();
+                   
+                   
                     usersList.Add(u);
                 }
                 return usersList;
@@ -132,8 +138,8 @@ namespace GEO
                 while (reader.Read())
                 {
                     user u = new user();
-                    u.id = Convert.ToInt32(reader["id"].ToString());
-                    u.username = reader["username"].ToString();
+                    u.id = Convert.ToInt32(reader["id"].ToString()); 
+                    u.nomprenom= reader["nomETprenom"].ToString();
                     u.password = reader["password"].ToString();
                     u.role = reader["role"].ToString();
                     usersList.Add(u);
@@ -141,5 +147,8 @@ namespace GEO
                 return usersList;
             }
         }
+       
+       
+
     }
 }

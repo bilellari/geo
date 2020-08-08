@@ -19,7 +19,7 @@
                                 <Label Text="id user" TextColor="Black" />
                                 <Label Text="{Binding id}" />
                                 <Label Text="username" TextColor="Black" />
-                                <Label Text="{Binding username}" />
+                                <Label Text="{Binding nomprenom}" />
                                 <Label Text="password" TextColor="Black" />
                                 <Label Text="{Binding password}" />
                                 <Label Text="role" TextColor="Black"  />
@@ -30,9 +30,9 @@
                 </ListView.ItemTemplate>
             </ListView>
             <Picker  x:Name="TechnichianPicker"
-                    Title="choisir Technicien"
+                    Title="Choisir Technicien"
                      SelectedIndexChanged="TechnichianPicker_SelectedIndexChanged_1"
-                     ItemDisplayBinding="{Binding username}">
+                     ItemDisplayBinding="{Binding nomprenom}">
             </Picker>
             <Picker  x:Name="chambrePicker"
                     Title="Choisir Chambre"

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="GEO.updatecable">
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry x:Name="id_txt" Placeholder="saisir le nom  " IsVisible="False"/>
+            <Entry x:Name="nomcable_txt" Placeholder="saisir le nom  "/>
+            <Entry x:Name="brin_txt" Placeholder="saisir  le nombre de brins"/>
+
+            <Entry x:Name="bandepassante_txt" Placeholder="saisir la bande passante"/>
+
+
+            <Button Text="Modifier Cable" Clicked="Button_Clicked_1"  BackgroundColor="#487CEA" TextColor="White"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

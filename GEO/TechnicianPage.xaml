@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="GEO.TechnicianPage" BackgroundImageSource="app2.jpg">
-    <Grid>
+    <Grid >
         <Label x:Name="TechnicianNameLabel"  VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="0" Grid.ColumnSpan="2"/>
         <Button Text="Mes tâches" x:Name="MyTasksButton" Clicked="MyTasksButton_Clicked" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="2" Grid.Column="0" BackgroundColor="#487CEA" TextColor="White"/>
         <Button Text="Chambres" x:Name="ChambersButton" Clicked="ChambersButton_Clicked" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="2" Grid.Column="1" BackgroundColor="#487CEA" TextColor="White"/>

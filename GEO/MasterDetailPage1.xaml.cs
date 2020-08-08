@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -16,6 +16,7 @@ namespace GEO
         {
             InitializeComponent();
             MasterPage.ListView.ItemSelected += ListView_ItemSelected;
+
         }
 
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -43,7 +44,11 @@ namespace GEO
                             page = new AllTechnicians() as AllTechnicians;
                             break;
                         }
-                    
+                    case "Câbles":
+                        {
+                            page = new cable();
+                            break;
+                        }
                     default: return;
                 }
                 page.Title = item;
@@ -58,6 +63,13 @@ namespace GEO
                 
                 return;
             }
+        }
+
+
+        private void ToolbarItem_Clicked_1(object sender, EventArgs e)
+        {
+            Preferences.Set("username", null);
+            Navigation.PushAsync(new LoginPage());
         }
     }
 }

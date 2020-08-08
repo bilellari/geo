@@ -14,13 +14,23 @@ namespace GEO
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class UpdateChamber : ContentPage
     {
-        public UpdateChamber(int id,string name, double lon, double lat)
+        string cb1;
+        string cb2;
+        string cb3;
+
+        public UpdateChamber(int id,string nom, double lon, double lat, string cable1, string cable2, string cable3)
         {
             InitializeComponent();
             idtxt.Text = id.ToString();
-            namechambretxt.Text = name;
+            namechambretxt.Text =nom ;
             longtudetxt.Text = lon.ToString();
             latitudetxt.Text = lat.ToString();
+            cable1Picker.SelectedItem = cable1;
+            cable1Picker.SelectedItem = cable2;
+            cable1Picker.SelectedItem = cable3;
+            cable1Picker.ItemsSource = getcableToPicker();
+            cable2Picker.ItemsSource = getcableToPicker();
+            cable3Picker.ItemsSource = getcableToPicker();
 
         }
 
@@ -91,17 +101,21 @@ namespace GEO
                         double latitude = double.Parse(latitudetxt.Text.ToString());
                         SqlCommand command = new SqlCommand
                             (
-                            "update  [dbo].[Chambre] set [name_Chambre]=@name,[Longitude]=@lo,[Latitude]=@la where [id_Chambre]=@id",
+                            "update  [dbo].[Chambre] set [name_Chambre]=@name,[Longitude]=@lo,[Latitude]=@la,[cable1]=@c1,[cable2]=@c2,[cable3]=@c3 where [id_Chambre]=@id",
                             con
                             );
                         command.Parameters.AddWithValue("@id", key);
                         command.Parameters.AddWithValue("@name", namechambretxt.Text);
                         command.Parameters.AddWithValue("@lo", longitude);
                         command.Parameters.AddWithValue("@la", latitude);
+                        command.Parameters.AddWithValue("@c1", cb1.ToString());
+                        command.Parameters.AddWithValue("@c2", cb2.ToString());
+                        command.Parameters.AddWithValue("@c3", cb3.ToString());
                         con.Open();
                         command.ExecuteNonQuery();
                         con.Close();
                         DisplayAlert("", "chambre modifiée", "Ok");
+                        Application.Current.MainPage = new NavigationPage(new MasterDetailPage1());
                     }
                 }
             }
@@ -173,5 +187,53 @@ namespace GEO
             string pinName = ((Pin)sender).Label;
             await DisplayAlert("", $" {pinName}.", "Ok");
         }
+
+        private void Button_Clicked_1(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new cablage());
+        }
+
+        private void cable1Picker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var picker = sender as Picker;
+            var selectedCategory = (mcable)picker.SelectedItem;
+            cb1 = selectedCategory.all;
+        }
+
+        private void cable2Picker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var picker = sender as Picker;
+            var selectedCategory = (mcable)picker.SelectedItem;
+            cb2 = selectedCategory.all;
+        }
+
+        private void cable3Picker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var picker = sender as Picker;
+            var selectedCategory = (mcable)picker.SelectedItem;
+            cb3 = selectedCategory.all;
+        }
+        public List<mcable> getcableToPicker()
+        {
+            List<mcable> cableList = new List<mcable>();
+            using (SqlConnection con = new SqlConnection(connect.c))
+            {
+                SqlCommand command = new SqlCommand("select * from [dbo].[cable]", con);
+                con.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    mcable u = new mcable();
+                    u.Nom_Cable = reader["Nom_Cable"].ToString();
+                    u.Nombre_brin = reader["Nombre_brin"].ToString();
+                    u.all = u.Nom_Cable + u.Nombre_brin;
+
+                    cableList.Add(u);
+                }
+                return cableList;
+            }
+        }
+
+      
     }
 }

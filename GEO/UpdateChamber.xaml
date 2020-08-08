@@ -12,8 +12,24 @@
             <Entry x:Name="namechambretxt" Placeholder="nom de la chambre"/>
             <Entry x:Name="longtudetxt" Placeholder="longitude" />
             <Entry x:Name="latitudetxt" Placeholder="latitude" />
-            <Button Text="Modifier"
-                    Clicked="Button_Clicked"/>
+            <Picker  x:Name="cable1Picker"
+                    Title="Choisir cable 1"
+                     SelectedIndexChanged="cable1Picker_SelectedIndexChanged"
+                     ItemDisplayBinding="{Binding all}">
+            </Picker>
+            <Picker  x:Name="cable2Picker"
+                    Title="Choisir cable 2"
+                     SelectedIndexChanged="cable2Picker_SelectedIndexChanged"
+                     ItemDisplayBinding="{Binding all}">
+            </Picker>
+            <Picker  x:Name="cable3Picker"
+                    Title="Choisir cable 3"
+                     SelectedIndexChanged="cable3Picker_SelectedIndexChanged"
+                     ItemDisplayBinding="{Binding all}">
+            </Picker>
+
+            <Button Text="Ajouter nouveau cable" Clicked="Button_Clicked_1" BackgroundColor="#487CEA " TextColor="White"/>
+            <Button Text="Modifier" Clicked="Button_Clicked"/>
             <maps:Map x:Name="formMap"  VerticalOptions="EndAndExpand" HeightRequest="400"  MapClicked="formMap_MapClicked"/>
         </StackLayout>
     </ContentPage.Content>

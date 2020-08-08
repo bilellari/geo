@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"  x:Class="GEO.cable">
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry x:Name="idtxt" IsReadOnly="True" IsVisible="False" />
+            <Entry x:Name="nomtxt" IsReadOnly="True" IsVisible="False" />
+            <Entry x:Name="nbrtxt" Placeholder="nom de la chambre" IsVisible="False" />
+            <Entry x:Name="bandetxt" Placeholder="longitude" IsVisible="False"/>
+            <Button Text="Ajouter"
+                    Clicked="Button_Clicked"
+                    TextColor="White" BackgroundColor="#487CEA"/>
+            <Button Text="Supprimer"
+                    Clicked="Button_Clicked_1" TextColor="White" BackgroundColor="#487CEA"/>
+            <Button Text="Modifier" 
+                    Clicked="Button_Clicked_3"
+                    TextColor="White" BackgroundColor="#487CEA"/>
+            <ListView IsPullToRefreshEnabled="True"
+                      ItemTapped="CableListView2_ItemTapped"
+                      x:Name="CableListView2"
+                      RowHeight="200"
+                  SeparatorColor="DarkGray"
+                    BackgroundColor="#8A849B" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell Tapped="ViewCell_Tapped">
+                            <StackLayout>
+                                <Label Text="Nom de la cable" TextColor="Black" />
+                                <Label Text="{Binding Nom_Cable}"/>
+                                <Label Text="Nombre de brins" TextColor="Black" />
+                                <Label Text="{Binding Nombre_brin}"/>
+                                <Label Text="Bande passante" TextColor="Black"  />
+                                <Label Text="{Binding bande_passante}"/>
+
+
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

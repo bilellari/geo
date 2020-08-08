@@ -1,4 +1,5 @@
 ﻿using System;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -9,8 +10,16 @@ namespace GEO
         public App()
         {
             InitializeComponent();
-
-            MainPage = new LoginPage();
+            var accesstoken = Preferences.Get("username", string.Empty);
+            if (string.IsNullOrEmpty(accesstoken))
+            {
+                MainPage = new NavigationPage(new LoginPage());
+            }
+            else
+            {
+                MainPage = new NavigationPage(new MasterDetailPage1());
+            }
+            //MainPage = new LoginPage();
         }
 
         protected override void OnStart()

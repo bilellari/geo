@@ -5,13 +5,21 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="GEO.MasterDetailPage1"
+                  NavigationPage.HasNavigationBar="False"
              xmlns:pages="clr-namespace:GEO" >
+    <MasterDetailPage.ToolbarItems>
+        <ToolbarItem IconImageSource="button.png" Priority="0" Order="Default" Clicked="ToolbarItem_Clicked_1"></ToolbarItem>
+    </MasterDetailPage.ToolbarItems>
   <MasterDetailPage.Master>
     <pages:MasterDetailPage1Master x:Name="MasterPage"  />
   </MasterDetailPage.Master>
   <MasterDetailPage.Detail>
     <NavigationPage>
-      <x:Arguments>
+            <x:Arguments>
+                
+                
+            
+           
         <pages:MasterDetailPage1Detail />
       </x:Arguments>
     </NavigationPage>

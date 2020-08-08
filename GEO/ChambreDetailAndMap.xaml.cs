@@ -19,6 +19,9 @@ namespace GEO
         {
             InitializeComponent();
             this.Chambre = chambre;
+            Position position = new Position(34.751440, 10.675077);
+            MapSpan mapSpan = new MapSpan(position, 0.01, 0.01);
+            Map map = new Map(mapSpan);
             btnTakeToLocation_Clicked(null, null);
         }
 

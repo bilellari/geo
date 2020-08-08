@@ -17,7 +17,7 @@
             <Entry x:Name="longtudetxt" IsVisible="False"/>
             <Entry x:Name="latitudetxt" IsVisible="False"/>
             <Button x:Name="btnTakeToLocation" Text="Voir sur la carte" Clicked="btnTakeToLocation_Clicked" BackgroundColor="#487CEA " TextColor="White"/>
-            <Button Text="Marquer finie"  BackgroundColor="#487CEA " TextColor="White"/>
+            <Button Text="Marquer finie" Clicked="Button_Clicked" BackgroundColor="#487CEA " TextColor="White"/>
             <maps:Map x:Name="formMap"  VerticalOptions="EndAndExpand" HeightRequest="400" />
             <StackLayout Orientation="Horizontal"
                      HorizontalOptions="Center"

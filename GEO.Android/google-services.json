@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "1060980975501",
+    "firebase_url": "https://geoapp-65de0.firebaseio.com",
+    "project_id": "geoapp-65de0",
+    "storage_bucket": "geoapp-65de0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1060980975501:android:1161cb19962b587e00bfc4",
+        "android_client_info": {
+          "package_name": "com.companyname.geo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1060980975501-f0a9rbvha39t4jmuvotm3vqskqqpu1rf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3W08CbhM3tfB3elIA6x4qilZNo-hYMhQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1060980975501-f0a9rbvha39t4jmuvotm3vqskqqpu1rf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1060980975501:android:f78c8843ad9f4ff400bfc4",
+        "android_client_info": {
+          "package_name": "com.xamarin.testing"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1060980975501-f0a9rbvha39t4jmuvotm3vqskqqpu1rf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3W08CbhM3tfB3elIA6x4qilZNo-hYMhQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1060980975501-f0a9rbvha39t4jmuvotm3vqskqqpu1rf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,13 +16,7 @@ namespace GEO
     {
 
 
-        public class Chambre
-        {
-            public int id_Chambre { get; set; }
-            public string name_Chambre { get; set; }
-            public double Longitude { get; set; }
-            public double Latitude { get; set; }
-        }
+       
         public Chambers()
         {
 
@@ -53,6 +48,11 @@ namespace GEO
                     c.name_Chambre = reader["name_Chambre"].ToString();
                     c.Longitude = double.Parse(reader["Longitude"].ToString());
                     c.Latitude = double.Parse(reader["Latitude"].ToString());
+                    c.Cable1= reader["cable1"].ToString();
+                    c.Cable2 = reader["cable3"].ToString();
+                    c.Cable3 = reader["cable3"].ToString();
+                    c.allcable = reader["cable1"].ToString() + reader["cable3"].ToString() + reader["cable3"].ToString();
+
                     chambrelist.Add(c);
 
                 }
@@ -61,28 +61,29 @@ namespace GEO
                 
             }
 
-
-
-
         }
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            
+
             Navigation.PushModalAsync(new addchamber());
         }
-
-        private void Button_Clicked_1(object sender, EventArgs e)
+      
+       async void Button_Clicked_1(object sender, EventArgs e)
         {
 
 
 
             if (string.IsNullOrEmpty(idtxt.Text))
-            {
+            {await
                 DisplayAlert("Oops", "choisissez la chambre que vous souhaitez supprimer", "Ok");
             }
             else
-            {
+           {
+                bool answer = await DisplayAlert("Confirmer Suppression", "vouler vous suprimmer cette chambre", "Yes", "No");
+                Debug.WriteLine("Answer: " + answer);
+                if(answer)
+              { 
                 using (SqlConnection con = new SqlConnection(connect.c))
                 {
                     Int32 key = Convert.ToInt32(idtxt.Text);
@@ -92,8 +93,15 @@ namespace GEO
                     con.Open();
                     command.ExecuteNonQuery();
                     con.Close();
-                    DisplayAlert("", "chambre supprimée", "Ok");
+                      await  DisplayAlert("", "la chambre est supprimée", "Ok");
+                        ChambreListView2.ItemsSource = getChambre();
                 }
+              }
+                else
+                    {
+                       await DisplayAlert("", "vous avez annuler la suppression", "Ok");
+                }
+                
             }
 
         }
@@ -108,7 +116,7 @@ namespace GEO
             { 
                 Navigation.PushModalAsync(new UpdateChamber(int.Parse(idtxt.Text),namechambretxt.Text,
                 double.Parse(longtudetxt.Text)
-                , double.Parse(latitudetxt.Text))); 
+                , double.Parse(latitudetxt.Text), cable1etxt.Text, cable2txt.Text, cable3txt.Text)); 
             }
             
         }
@@ -116,19 +124,30 @@ namespace GEO
       public void ChambreListView2_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             
-            var item = (Chambre)e.Item;
+            Chambre item = (Chambre)e.Item;
             Int32 id = Convert.ToInt32(item.id_Chambre);
             double lomgtude = double.Parse(item.Longitude.ToString());
             double latitude = double.Parse(item.Latitude.ToString());
+            
             idtxt.Text = id.ToString();
             namechambretxt.Text = item.name_Chambre;
             longtudetxt.Text = lomgtude.ToString();
             latitudetxt.Text = latitude.ToString();
+            cable1etxt.Text = item.Cable1;
+            cable2txt.Text = item.Cable2;
+            cable3txt.Text = item.Cable3;
+            
         }
 
         private void Button_Clicked_3(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new Page1());
+            if (string.IsNullOrEmpty(idtxt.Text))
+            {
+                DisplayAlert("", "Veuiller choisir une chambre ", "Ok");
+            }
+            else { Navigation.PushModalAsync(new chambermap(namechambretxt.Text, longtudetxt.Text, latitudetxt.Text)); 
+            }
+           
         }
         ViewCell lastCell;
         private void ViewCell_Tapped(object sender, EventArgs e)
@@ -138,10 +157,25 @@ namespace GEO
             var viewCell = (ViewCell)sender;
             if (viewCell.View != null)
             {
-                viewCell.View.BackgroundColor = Color.FromHex("#6993C6");
+                viewCell.View.BackgroundColor = Color.FromHex("#FFFFFF");
                 lastCell = viewCell;
                 
             }
+        }
+        async void OnAlertYesNoClicked(object sender, EventArgs e)
+        {
+            bool answer = await DisplayAlert("Confirmer Suppression", "vouler vous suprimmer cette chambre", "Yes", "No");
+            Debug.WriteLine("Answer: " + answer);
+        }
+
+        private void chbrSearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            List<Chambre> chambrelist = new List<Chambre>();
+            chambrelist = getChambre().ToList();
+            if (!String.IsNullOrEmpty(chbrSearchBar.Text))
+                ChambreListView2.ItemsSource = chambrelist.Where(x => x.name_Chambre.Contains(chbrSearchBar.Text)|| x.Cable1.Contains(chbrSearchBar.Text));
+            else
+                ChambreListView2.ItemsSource = chambrelist;
         }
     }
 }

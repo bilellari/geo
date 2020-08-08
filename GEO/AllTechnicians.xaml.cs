@@ -1,6 +1,7 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,13 +17,19 @@ namespace GEO
         public class user
         {
 
-            public int id { get; set; }
-            public string nom { get; set; }
-            public string prenom { get; set; }
+            public double id { get; set; }
+            public string nomprenom { get; set; }
+
+            public string cin { get; set; }
+            public string datebirth { get; set; }
+            public string adress { get; set; }
+            public string email { get; set; }
             public string tel { get; set; }
-            public string username { get; set; }
+
+
             public string password { get; set; }
             public string role { get; set; }
+
         }
         public AllTechnicians()
         {
@@ -43,17 +50,19 @@ namespace GEO
                
                 using (SqlConnection con = new SqlConnection(connect.c))
                 {
-                    SqlCommand command = new SqlCommand("select * from [dbo].[user]", con);
+                    SqlCommand command = new SqlCommand("select * from [dbo].[user] where [role]='Technicien'", con);
                     con.Open();
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
                         user u = new user();
                         u.id = Convert.ToInt32(reader["id"].ToString());
-                        u.nom = reader["nom"].ToString();
-                        u.prenom = reader["prenom"].ToString();
+                        u.nomprenom = reader["nomETprenom"].ToString();
+                        u.cin = reader["cin"].ToString();
+                        u.datebirth = reader["date_naiss"].ToString();
+                        u.adress= reader["adress"].ToString();
+                        u.email = reader["email"].ToString();
                         u.tel = reader["tel"].ToString();
-                        u.username = reader["username"].ToString();
                         u.password = reader["password"].ToString();
                         u.role = reader["role"].ToString();
                         usersList.Add(u);
@@ -68,38 +77,59 @@ namespace GEO
             return usersList;
         }
 
-        private void btnDeleteUser_Clicked(object sender, EventArgs e)
+        async void btnDeleteUser_Clicked(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(idusertxt.Text))
             {
-                DisplayAlert("Oops", "Choisir utilisateur", "Ok");
+               await DisplayAlert("", "Choisir utilisateur!", "Ok");
             }
             else
             {
-                using (SqlConnection con = new SqlConnection(connect.c))
+                bool answer = await DisplayAlert("Confirmer Suppression", "vouler vous suprimmer ce technicien", "Oui", "Non");
+                Debug.WriteLine("Answer: " + answer);           
+                if (answer)
                 {
-                    Int32 key = Convert.ToInt32(idusertxt.Text);
-                    SqlCommand command = new SqlCommand
-                        ("delete from [dbo].[user] where [id]=@id", con);
-                    command.Parameters.AddWithValue("@id", key);
-                    con.Open();
-                    command.ExecuteNonQuery();
-                    con.Close();
-                    DisplayAlert("alert", "utilisateur supprimé", "Ok");
+                    using (SqlConnection con = new SqlConnection(connect.c))
+                    {
+                        Int32 key = Convert.ToInt32(idusertxt.Text);
+                        SqlCommand command = new SqlCommand
+                            ("delete from [dbo].[user] where [id]=@id", con);
+                        command.Parameters.AddWithValue("@id", key);
+                        con.Open();
+                        command.ExecuteNonQuery();
+                        con.Close();
+                       await DisplayAlert("alert", "utilisateur supprimé", "Ok");
+                        userListView.ItemsSource = GetUsers();
+
+
+                    }
                 }
+                else
+                {
+                    await DisplayAlert("", "vous avez annuler la suppression", "Ok");
+                }
+                   
             }
         }
  
         private void btnEditUser_Clicked(object sender, EventArgs e)
         {
+            try { 
             if(string.IsNullOrEmpty(idusertxt.Text))
             {
-                DisplayAlert("Oops", "Choisir utilisateur", "Ok");
+                DisplayAlert("", "Choisir utilisateur", "Ok");
             }
            
             else
-            Navigation.PushModalAsync(new updateuser(int.Parse(idusertxt.Text),nomuser.Text,prenomuser.Text,int.Parse(teluser.Text),usernameEdittxt.Text,passwordEdittxt.Text,roleEditPicker.SelectedItem.ToString()));
+                  
+            Navigation.PushModalAsync(new updateuser(double.Parse(idusertxt.Text),nom_prenom.Text, cincxt.Text,fakelbl.Text,adresstxt.Text,emailtxt.Text,int.Parse(teluser.Text),passwordEdittxt.Text,roleEditPicker.SelectedItem.ToString()));
         }
+            catch(Exception exp)
+            {
+                DisplayAlert("", exp.Message, "ok");
+            }
+
+            }
 
         private void btnaddUser_Clicked(object sender, EventArgs e)
         {
@@ -109,18 +139,25 @@ namespace GEO
         private void userListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var item = (user)e.Item;
-            Int32 id = Convert.ToInt32(item.id);
-            string nom = Convert.ToString(item.nom);
-            string prenom = Convert.ToString(item.prenom);
+            double id = Convert.ToInt64(item.id);
+            string nomprenom = Convert.ToString(item.nomprenom);
+          string cin= Convert.ToString(item.cin);
+            
+             
+            string email = Convert.ToString(item.email);
+            
             string tel = Convert.ToString(item.tel);
-            string username = Convert.ToString(item.username);
             string password = Convert.ToString(item.password);
             string role = item.role;
+            string ddate = item.datebirth;
             idusertxt.Text = id.ToString();
-            nomuser.Text = nom.ToString();
-            prenomuser.Text = prenom.ToString();
+            nom_prenom.Text = nomprenom.ToString();
+            fakelbl.Text = ddate.ToString();
+            adresstxt.Text= item.adress;
+            cincxt.Text = cin.ToString();
+            emailtxt.Text = email.ToString();
             teluser.Text = tel.ToString();
-            usernameEdittxt.Text = username.ToString();
+            
             passwordEdittxt.Text = password.ToString();
             roleEditPicker.SelectedItem = role.ToString();
         }
@@ -137,6 +174,16 @@ namespace GEO
                 viewCell.View.BackgroundColor = Color.Azure;
                 lastCell = viewCell;
             }
+        }
+
+        private void techSearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            List<user> userlist = new List<user>();
+            userlist = GetUsers().ToList();
+            if (!String.IsNullOrEmpty(techSearchBar.Text))
+                userListView.ItemsSource = userlist.Where(x => x.nomprenom .Contains(techSearchBar.Text) || x.tel .Contains(techSearchBar.Text) || x.email.Contains(techSearchBar.Text) || x.cin.Contains(techSearchBar.Text));
+            else
+                userListView.ItemsSource = userlist;
         }
     }
 }

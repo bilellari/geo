@@ -36,7 +36,8 @@ namespace GEO
                     new MasterDetailPage1MasterMenuItem { Id = 0, Title = "Chambres" },
                     new MasterDetailPage1MasterMenuItem { Id = 1, Title = "Techniciens" },
                     new MasterDetailPage1MasterMenuItem { Id = 2, Title = "Tâches" },
-                    
+                    new MasterDetailPage1MasterMenuItem { Id = 3, Title = "Câbles" },
+
                 });
             }
 
